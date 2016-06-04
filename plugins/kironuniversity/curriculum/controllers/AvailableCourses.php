@@ -108,18 +108,35 @@ class AvailableCourses extends Controller
     if(!$avc->course_id){
       $platform = Platform::where('denomination', 'ilike', $avc->initiative)->first();
       if(!$platform){
-        dd('Platform: '. $avc->platform. ' is not in our database');
+        dd('Platform: '. $avc->initiative. ' is not in our database', $avc->initiative);
       }
+
       $a_fields = [
-        'course_name' => $avc->denomination,
+        'denomination' => $avc->denomination,
         'link' => $avc->url,
-        'desc1' => $avc->description,
-        'desc2' => $avc->long_description,
-        'platform' => $platform->id,
+        'syllabus' => $avc->syllabus,
+        'short_description' => $avc->description,
+        'long_description' => $avc->long_description,
+        'platform_id' => $platform->id,
         'weeks' => $avc->length,
-        'code' => $avc->id + 3000,
-        'course_level' => 1,
+        //'code' => $avc->id + 3000,
+        'course_level_id' => 1,
+        'cp' => 0,
       ];
+
+      if($avc->certificate){
+        $a_fields['certificate'] = 'paid';
+      }else{
+        $a_fields['certificate'] = 'none';
+      }
+
+      if($avc->workload_min){
+        $a_fields['workload'] = $avc->workload_min;
+      }else {
+        $a_fields['workload'] = 0;
+      }
+
+      $a_fields['weeks'] = !empty($avc->length) ? $avc->length : 0;
 
       $date = new \Carbon\Carbon($avc->start_date);
       //dd($date->toDateString(), $avc->start_date);
@@ -132,7 +149,7 @@ class AvailableCourses extends Controller
       $avc->course_id = $course->id;
       $avc->save();
     }
-    return Redirect(Backend::url('kironuniversity/curriculumwork/courses/update/'.$avc->course_id));
+    return Redirect(Backend::url('kironuniversity/curriculum/courses/update/'.$avc->course_id));
   }
 
 }

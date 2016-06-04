@@ -85,14 +85,14 @@ fields:
 
     short_description:
         label: Short Description
-        type: textarea
+        type: richeditor
         required: true
         span: left
         comment: "CAUTION: Could be overwritten during an update of the scraper"
 
     long_description:
         label: Long Description
-        type: textarea
+        type: richeditor
         span: right
         comment: "CAUTION: Could be overwritten during an update of the scraper"
 
