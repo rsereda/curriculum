@@ -61,7 +61,7 @@ class Course extends Model
       'key' => 'course_modules',
       'otherKey' => 'module_courses',
     ],*/
-    'examtypes' => ['Kironuniversity\Curriculum\Models\Examtype', 'table' => 'course__exam_type'],
+    'examtypes' => ['Kironuniversity\Curriculum\Models\ExamType', 'table' => 'course__exam_type'],
     'competencies' => ['Kironuniversity\Curriculum\Models\Competency', 'table' => 'competency__course']
   ];
   public $morphTo = [];
