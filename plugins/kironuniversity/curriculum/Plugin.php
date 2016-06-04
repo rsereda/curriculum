@@ -59,6 +59,12 @@ class Plugin extends PluginBase
         'order'       => 600,
 
         'sideMenu' => [
+          'availablecourses' => [
+            'label'       => 'Available Courses',
+            'icon'        => 'icon-video-camera',
+            'url'         => Backend::url('kironuniversity/curriculum/availablecourses'),
+            'permissions' => ['kironuniversity.curriculum.*']
+          ],
           'courses' => [
             'label'       => 'Courses',
             'icon'        => 'icon-video-camera',
