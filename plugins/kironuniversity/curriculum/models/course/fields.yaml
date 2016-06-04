@@ -1,0 +1,103 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    ready:
+      label: Ready (All information is filled in)
+      type: switch
+      span: left
+
+    denomination:
+        label: Coursename
+        span: left
+        required: true
+
+    platform:
+        label: Platform:
+        type: relation
+        nameFrom: denomination
+        span: right
+        required: true
+
+    course_level:
+        label: Level
+        type: relation
+        nameFrom: denomination
+        span: left
+        required: true
+        comment: CATUION! This values is set to Introductory as default the scraper don't get this information
+
+    weeks:
+        label: Weeks/Units
+        type: number
+        span: right
+
+    workload:
+        label: Worklad
+        type: number
+        span: left
+
+    cp:
+      label: CP
+      type: number
+      span: right
+
+    certificate:
+      label: Certificate
+      type: radio
+      options:
+        paid: Paid
+        free: Free
+        none: None
+
+    examtypes:
+      label: Exam types
+      type: relation
+      nameFrom: denomination
+
+    university:
+        label: Offered By
+        span: right
+        required: true
+
+
+    start_date:
+        label: Start date
+        type: datepicker
+        mode: date
+        span: left
+        comment: "CAUTION: Could be overwritten during an update of the scraper - Leave empty for self paced courses"
+
+    end_date:
+        label: End date
+        type: datepicker
+        mode: date
+        span: left
+        comment: "CAUTION: Could be overwritten during an update of the scraper - Leave empty for self paced courses"
+
+    link:
+        label: Link
+        required: true
+        span: right
+        comment: "CAUTION: Could be overwritten during an update of the scraper"
+
+    short_description:
+        label: Short Description
+        type: textarea
+        required: true
+        span: left
+        comment: "CAUTION: Could be overwritten during an update of the scraper"
+
+    long_description:
+        label: Long Description
+        type: textarea
+        span: right
+        comment: "CAUTION: Could be overwritten during an update of the scraper"
+
+    #code:
+    #  label: Code
+    #  span: left
+    #  type: number
+    #  required: true

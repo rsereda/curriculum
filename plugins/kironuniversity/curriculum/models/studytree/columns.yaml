@@ -1,0 +1,15 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+
+    denomination:
+        label: Name
+        searchable: true
+
+    path:
+        label: Path
+        searchable: false

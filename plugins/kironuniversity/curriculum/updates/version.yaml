@@ -1,0 +1,21 @@
+1.0.1:
+  - First version of Curriculum Backend
+  - create_competencies_table.php
+  - create_exam_types_table.php
+  - create_languages_table.php
+  - create_teaching_methods_table.php
+  - create_partner_universities_table.php
+  - create_platforms_table.php
+  - create_levels_table.php
+  - create_courses_table.php
+  - create_availablecourses_table.php
+  - create_modules_table.php
+  - create_study_trees_table.php
+  - create_courses_languages_table.php
+  - create_competency__competency_table.php
+  - create_course__examtype_table.php
+  - create_module__teaching_method.php
+  - create_competency__course.php
+  - create_competency__module.php
+  - create_competency__module__course.php
+  - create_module__study_tree.php

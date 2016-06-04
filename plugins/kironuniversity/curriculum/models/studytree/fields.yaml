@@ -1,0 +1,13 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+  denomination:
+    label: Name
+
+  parent:
+    label: Parent ID
+    type: relation
+    nameFrom: path
+    emptyOption: No Parent

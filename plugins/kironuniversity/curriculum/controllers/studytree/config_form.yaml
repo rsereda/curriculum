@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Study Tree
+
+# Model Form Field configuration
+form: $/kironuniversity/curriculum/models/studytree/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\StudyTree
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriculum/studytree
+
+# Create page
+create:
+    title: Create Study Tree
+    redirect: kironuniversity/curriculum/studytree/update/:id
+    redirectClose: kironuniversity/curriculum/studytree
+
+# Update page
+update:
+    title: Edit Study Tree
+    redirect: kironuniversity/curriculum/studytree
+    redirectClose: kironuniversity/curriculum/studytree
+
+# Preview page
+preview:
+    title: Preview Study Tree

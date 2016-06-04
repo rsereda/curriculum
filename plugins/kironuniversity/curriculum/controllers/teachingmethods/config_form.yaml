@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Teaching Method
+
+# Model Form Field configuration
+form: $/kironuniversity/curriculum/models/teachingmethod/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\TeachingMethod
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriculum/teachingmethods
+
+# Create page
+create:
+    title: Create Teaching Method
+    redirect: kironuniversity/curriculum/teachingmethods/update/:id
+    redirectClose: kironuniversity/curriculum/teachingmethods
+
+# Update page
+update:
+    title: Edit Teaching Method
+    redirect: kironuniversity/curriculum/teachingmethods
+    redirectClose: kironuniversity/curriculum/teachingmethods
+
+# Preview page
+preview:
+    title: Preview Teaching Method

@@ -1,0 +1,33 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+  id:
+    label: ID
+    searchable: true
+
+  denomination:
+    label: Name
+    searchable: true
+
+  cp:
+    label: ECTS
+
+  duration:
+    label: Duration
+
+  partner_university:
+    label: Partner University
+    relation: partner_university
+    select: denomination
+
+  responsible_user:
+    label: Reposible Person
+    relation: responsible_user
+    valueFrom: full_name    
+
+  updatedBy:
+    label: Updated By
+    relation: updatedBy
+    valueFrom: full_name

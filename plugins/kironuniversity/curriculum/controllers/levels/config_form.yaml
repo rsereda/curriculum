@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Level
+
+# Model Form Field configuration
+form: $/kironuniversity/curriculum/models/level/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\Level
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriculum/levels
+
+# Create page
+create:
+    title: Create Level
+    redirect: kironuniversity/curriculum/levels/update/:id
+    redirectClose: kironuniversity/curriculum/levels
+
+# Update page
+update:
+    title: Edit Level
+    redirect: kironuniversity/curriculum/levels
+    redirectClose: kironuniversity/curriculum/levels
+
+# Preview page
+preview:
+    title: Preview Level

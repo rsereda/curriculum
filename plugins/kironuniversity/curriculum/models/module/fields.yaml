@@ -1,0 +1,33 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    denomination:
+        label: Name
+        required: true
+
+    content:
+        label: Content
+        type: textarea
+
+    cp:
+      label: ECTS
+      type: number
+      required: true
+
+    duration:
+        label: Duration
+        type: number
+        required: true
+
+    responsible_user:
+        label: Responsible Person
+        type: relation
+        nameFrom: full_name
+
+    partner_university:
+        label: Partner University / Kiron
+        type: relation
+        nameFrom: denomination

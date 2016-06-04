@@ -1,0 +1,14 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    denomniation:
+        label: Name
+        span: left
+
+    short:
+        label: Abbreviation
+        comment: Should be two chars
+        span: right

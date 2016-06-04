@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Language
+
+# Model Form Field configuration
+form: $/kironuniversity/curriculum/models/language/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\Language
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriculum/languages
+
+# Create page
+create:
+    title: Create Language
+    redirect: kironuniversity/curriculum/languages/update/:id
+    redirectClose: kironuniversity/curriculum/languages
+
+# Update page
+update:
+    title: Edit Language
+    redirect: kironuniversity/curriculum/languages
+    redirectClose: kironuniversity/curriculum/languages
+
+# Preview page
+preview:
+    title: Preview Language

@@ -1,0 +1,10 @@
+competencies:
+  label: competency
+  view:
+        list: $/kironuniversity/curriculum/models/competency/columns.yaml
+        toolbarButtons: link|unlink|create
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/competency/fields.yaml
+        recordsPerPage: 10
+        showSearch: true

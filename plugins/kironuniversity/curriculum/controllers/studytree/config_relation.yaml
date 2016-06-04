@@ -1,0 +1,9 @@
+
+children:
+  label: Children
+  view:
+        list: $/kironuniversity/curriculum/models/studytree/columns.yaml
+        toolbarButtons: create|delete
+  manage:
+        form: $/kironuniversity/curriculum/models/studytree/fields_relation.yaml
+        recordsPerPage: 10

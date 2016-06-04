@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Competency
+
+# Model Form Field configuration
+form: $/kironuniversity/curriculum/models/competency/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\Competency
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriculum/competencies
+
+# Create page
+create:
+    title: Create Competency
+    redirect: kironuniversity/curriculum/competencies/update/:id
+    redirectClose: kironuniversity/curriculum/competencies
+
+# Update page
+update:
+    title: Edit Competency
+    redirect: kironuniversity/curriculum/competencies
+    redirectClose: kironuniversity/curriculum/competencies
+
+# Preview page
+preview:
+    title: Preview Competency

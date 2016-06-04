@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Study Program
+
+# Model Form Field configuration
+form: $/kironuniversity/curriculum/models/studyprogram/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\StudyProgram
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriculum/studyprograms
+
+# Create page
+create:
+    title: Create Study Program
+    redirect: kironuniversity/curriculum/studyprograms/update/:id
+    redirectClose: kironuniversity/curriculum/studyprograms
+
+# Update page
+update:
+    title: Edit Study Program
+    redirect: kironuniversity/curriculum/studyprograms
+    redirectClose: kironuniversity/curriculum/studyprograms
+
+# Preview page
+preview:
+    title: Preview Study Program

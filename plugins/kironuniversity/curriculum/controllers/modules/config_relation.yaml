@@ -1,0 +1,33 @@
+
+study_trees:
+  label: place in study tree
+  view:
+        list: $/kironuniversity/curriculum/models/studytree/columns.yaml
+        toolbarButtons: link|unlink
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/studytree/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
+
+teaching_methods:
+  label: teaching method
+  view:
+        list: $/kironuniversity/curriculum/models/teachingmethod/columns.yaml
+        toolbarButtons: link|unlink|create
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/teachingmethod/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
+
+competencies:
+  label: competency
+  view:
+        list: $/kironuniversity/curriculum/models/competency/columns.yaml
+        toolbarButtons: link|unlink|create
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/competency/fields.yaml
+        recordsPerPage: 10
+        showSearch: true

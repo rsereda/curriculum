@@ -1,0 +1,38 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    denomination:
+        label: Name
+        searchable: true
+
+    url:
+        label: URL
+
+    initiative:
+        label: initiative
+        searchable: true
+
+    language:
+      label: Language
+      searchable: true
+
+    workload_min:
+        label: Workload Minimum
+
+    workload_max:
+        label: Workload Maximum
+
+    description:
+        label: Description
+        searchable: true
+        invisible: true
+
+    start_date:
+        label: Start date
+
+    syllabus:
+        label: Syllabus
+        searchable: true
+        invisible: true

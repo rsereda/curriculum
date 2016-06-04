@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Partner University
+
+# Model Form Field configuration
+form: $/kironuniversity/curriculum/models/partneruniversity/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\PartnerUniversity
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriculum/partneruniversities
+
+# Create page
+create:
+    title: Create Partner University
+    redirect: kironuniversity/curriculum/partneruniversities/update/:id
+    redirectClose: kironuniversity/curriculum/partneruniversities
+
+# Update page
+update:
+    title: Edit Partner University
+    redirect: kironuniversity/curriculum/partneruniversities
+    redirectClose: kironuniversity/curriculum/partneruniversities
+
+# Preview page
+preview:
+    title: Preview Partner University

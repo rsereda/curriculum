@@ -1,0 +1,18 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+    denomination:
+        label: Name
+        searchable: true
+
+    university:
+        label: Offered by
+
+
+
+    short_description:
+        label: Short Description
+        searchable: true

@@ -1,0 +1,13 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    denomination:
+      label: Name
+      required: true
+
+    contact_information:
+      label: Contact Information
+      type: textarea

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Module
+
+# Model Form Field configuration
+form: $/kironuniversity/curriculum/models/module/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\Module
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriculum/modules
+
+# Create page
+create:
+    title: Create Module
+    redirect: kironuniversity/curriculum/modules/update/:id
+    redirectClose: kironuniversity/curriculum/modules
+
+# Update page
+update:
+    title: Edit Module
+    redirect: kironuniversity/curriculum/modules
+    redirectClose: kironuniversity/curriculum/modules
+
+# Preview page
+preview:
+    title: Preview Module

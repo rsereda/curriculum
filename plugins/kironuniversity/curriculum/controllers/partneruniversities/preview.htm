@@ -1,0 +1,19 @@
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?= Backend::url('kironuniversity/curriculum/partneruniversities') ?>">Partner Universities</a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php if (!$this->fatalError): ?>
+
+    <div class="form-preview">
+        <?= $this->formRenderPreview() ?>
+    </div>
+
+<?php else: ?>
+
+    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p><a href="<?= Backend::url('kironuniversity/curriculum/partneruniversities') ?>" class="btn btn-default">Return to partner universities list</a></p>
+
+<?php endif ?>

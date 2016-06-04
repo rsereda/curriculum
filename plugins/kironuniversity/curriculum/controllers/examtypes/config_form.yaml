@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Exam Type
+
+# Model Form Field configuration
+form: $/kironuniversity/curriculum/models/examtype/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\ExamType
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriculum/examtypes
+
+# Create page
+create:
+    title: Create Exam Type
+    redirect: kironuniversity/curriculum/examtypes/update/:id
+    redirectClose: kironuniversity/curriculum/examtypes
+
+# Update page
+update:
+    title: Edit Exam Type
+    redirect: kironuniversity/curriculum/examtypes
+    redirectClose: kironuniversity/curriculum/examtypes
+
+# Preview page
+preview:
+    title: Preview Exam Type
