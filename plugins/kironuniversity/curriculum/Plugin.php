@@ -72,7 +72,7 @@ class Plugin extends PluginBase
             'permissions' => ['kironuniversity.curriculum.*']
           ],
           'competencies' => [
-            'label'       => 'Competency',
+            'label'       => 'Learning outcomes',
             'icon'        => 'icon-puzzle',
             'url'         => Backend::url('kironuniversity/curriculum/competencies'),
             'permissions' => ['kironuniversity.curriculum.*']

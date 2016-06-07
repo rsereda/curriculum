@@ -22,7 +22,7 @@ teaching_methods:
         showSearch: true
 
 competencies:
-  label: competency
+  label: learning outcome
   view:
         list: $/kironuniversity/curriculum/models/competency/columns.yaml
         toolbarButtons: link|unlink|create
