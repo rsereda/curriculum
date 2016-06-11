@@ -20,7 +20,6 @@ fields:
     duration:
         label: Duration
         type: number
-        required: true
 
     responsible_user:
         label: Responsible Person

@@ -18,7 +18,7 @@ class Module extends Model
 
   public $rules = [
         'denomination' => 'required',
-        'duration' => 'required|numeric',
+        'duration' => 'numeric',
         'cp' => 'required|numeric',
     ];
 

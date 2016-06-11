@@ -16,7 +16,7 @@ class CreateModulesTable extends Migration
             $table->text('denomination');
             $table->text('content');
             $table->float('cp');
-            $table->float('duration');
+            $table->float('duration')->nullable();
             $table->integer('responsible_user_id');
             $table->foreign('responsible_user_id')->references('id')->on('backend_users');
             $table->integer('partner_university_id');
