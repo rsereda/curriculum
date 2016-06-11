@@ -1,0 +1,44 @@
+<?php foreach($competencies as $competency){ ?>
+  <h4><?= $competency->competency->denomination ?></h4>
+  <div class="control-list list-unresponsive">
+    <table class="table data" data-control="rowlink">
+      <thead>
+        <tr>
+          <th style="width: 150px"><span>Course Name</span></th>
+          <th><a href="javascript:;">Status</a></th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach($competency->courses as $course){ ?>
+          <tr>
+            <td>
+              <a href="javascript:;">
+                <?= $course->denomination ?>
+              </a>
+            </td>
+            <td class="column-button nolink">
+              <div class="loading-indicator-container">
+                <div id="load-<?=$course->id?>" class="loading-indicator size-small" style="display:none">
+                  <span></span>
+                  <div>Loading </div>
+                </div>
+
+                <?php foreach($statusOptions as $option){
+                  $class = '';
+                  if($option == $course->pivot->status){
+                    $class ='active';
+                  }?>
+                  <a class="btn btn-default btn-sm <?= $class ?>" data-request="onUpdateCMCStatus"
+                    data-request-data="pivotId: <?= $course->pivot->id ?>, status: '<?= $option ?>'"
+                    data-request-loading="#load-<?=$course->id?>" data-request-success="reloadCMCList();">
+                    <?= $option ?>
+                  </a>
+                  <?php }?>
+                </div>
+              </td>
+            </tr>
+            <?php }?>
+          </tbody>
+        </table>
+      </div>
+      <?php }?>

@@ -19,3 +19,6 @@
   - create_competency__module.php
   - create_competency__module__course.php
   - create_module__study_tree.php
+1.0.2:
+  - change cmc status
+  - change_cmc_status.php
