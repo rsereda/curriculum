@@ -3,7 +3,7 @@
 # ===================================
 
 # Record name
-name: Competency
+name: Learning Outcome
 
 # Model Form Field configuration
 form: $/kironuniversity/curriculum/models/competency/fields.yaml
@@ -16,16 +16,16 @@ defaultRedirect: kironuniversity/curriculum/competencies
 
 # Create page
 create:
-    title: Create Competency
+    title: Create Learning Outcome
     redirect: kironuniversity/curriculum/competencies/update/:id
     redirectClose: kironuniversity/curriculum/competencies
 
 # Update page
 update:
-    title: Edit Competency
+    title: Edit Learning Outcome
     redirect: kironuniversity/curriculum/competencies
     redirectClose: kironuniversity/curriculum/competencies
 
 # Preview page
 preview:
-    title: Preview Competency
+    title: Preview Learning Outcome
