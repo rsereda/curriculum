@@ -5,3 +5,4 @@
 fields:
     denomination:
         label: Denomination
+        type: textarea

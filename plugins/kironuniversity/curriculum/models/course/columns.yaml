@@ -4,13 +4,16 @@
 
 columns:
 
+    id:
+      label: id
+      searchable: true
+
     denomination:
         label: Name
         searchable: true
 
     university:
         label: Offered by
-
 
 
     short_description:
