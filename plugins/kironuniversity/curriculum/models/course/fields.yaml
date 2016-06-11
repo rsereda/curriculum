@@ -83,6 +83,18 @@ fields:
         span: right
         comment: "CAUTION: Could be overwritten during an update of the scraper"
 
+    languages:
+        label: Languages
+        type: relation
+        nameFrom: denomination
+        span: left
+
+    subtitles:
+        label: Languages
+        type: relation
+        nameFrom: denomination
+        span: right
+
     short_description:
         label: Short Description
         type: richeditor

@@ -22,3 +22,9 @@
 1.0.2:
   - change cmc status
   - change_cmc_status.php
+1.0.3:
+  - Add Clusters for Competencies and Pivot Tables for Course and Language/Subtitles
+  - create_clusters_table.php
+  - create_competency__cluster.php
+  - create_course__language.php
+  - create_course__subtitle.php

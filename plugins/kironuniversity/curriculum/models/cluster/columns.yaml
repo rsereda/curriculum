@@ -6,3 +6,7 @@ columns:
     id:
         label: ID
         searchable: true
+
+    denomination:
+        label: Name
+        searchable: true

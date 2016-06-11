@@ -11,3 +11,8 @@ columns:
     denomination:
         label: Denomination
         searchable: true
+
+    clusters:
+        relation: clusters
+        valueFrom: denomination
+        searchable: true

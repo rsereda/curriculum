@@ -15,14 +15,14 @@ class Course extends Model
   use \October\Rain\Database\Traits\Validation;
 
   public $rules = [
-        'denomination' => 'required',
-        'platform_id' => 'required',
-        'course_level_id' => 'required',
-        'certificate' => 'required',
-        'weeks' => 'required',
-        'workload' => 'required',
-        'cp' => 'required',
-    ];
+    'denomination' => 'required',
+    'platform_id' => 'required',
+    'course_level_id' => 'required',
+    'certificate' => 'required',
+    'weeks' => 'required',
+    'workload' => 'required',
+    'cp' => 'required',
+  ];
 
 
   /**
@@ -55,16 +55,12 @@ class Course extends Model
     'platform' => ['Kironuniversity\Curriculum\Models\Platform', 'key' => 'platform_id'],
   ];
   public $belongsToMany = [
-/*    'modules' => [
-      'Kironuniversity\Curriculum\Models\Module',
-      'table' => 'course_modules__module_courses',
-      'key' => 'course_modules',
-      'otherKey' => 'module_courses',
-    ],*/
     'examtypes' => ['Kironuniversity\Curriculum\Models\ExamType', 'table' => 'course__exam_type'],
     'competencies' => ['Kironuniversity\Curriculum\Models\Competency', 'table' => 'competency__course'],
     'competency_modules' => ['Kironuniversity\Curriculum\Models\CompetencyModule', 'table' => 'competency__module__course','otherKey'=>'competency__module_id',
-  'pivot' => ['status','id']]
+    'pivot' => ['status','id']],
+    'languages' => ['Kironuniversity\Curriculum\Models\Language', 'table' => 'course__language'],
+    'subtitles' => ['Kironuniversity\Curriculum\Models\Language', 'table' => 'course__subtitle'],
   ];
   public $morphTo = [];
   public $morphOne = [];

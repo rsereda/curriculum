@@ -31,6 +31,8 @@ class Competency extends Model
     public $belongsTo = [];
     public $belongsToMany = [
       'courses' => ['Kironuniversity\Curriculum\Models\Course', 'table' => 'competency__course'],
+      'modules' => ['Kironuniversity\Curriculum\Models\Modules', 'table' => 'competency__module'],
+      'clusters' => ['Kironuniversity\Curriculum\Models\Cluster', 'table' => 'cluster__competency'],
     ];
     public $morphTo = [];
     public $morphOne = [];

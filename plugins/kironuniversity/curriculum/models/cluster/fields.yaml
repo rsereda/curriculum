@@ -3,6 +3,7 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+
+  denomination:
+    label: Name
+    required: true
