@@ -95,6 +95,12 @@ class Plugin extends PluginBase
             'url' => Backend::url('kironuniversity/curriculum/studytree/reorder'),
             'permissions' => ['kironuniversity.curriculum.*']
           ],
+          'universitytree' => [
+            'label' => 'View Tree',
+            'icon' => 'icon-tree',
+            'url' => Backend::url('kironuniversity/curriculum/studytree/view'),
+            'permissions' => ['kironuniversity.curriculum.*']
+          ],
           'partneruniversities' => [
             'label' => 'Partner University',
             'icon' => 'icon-university',

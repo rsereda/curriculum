@@ -2,6 +2,7 @@
 
 use Model;
 use BackendAuth;
+use Kironuniversity\Curriculum\Models\Course;
 /**
 * Module Model
 */
@@ -61,6 +62,15 @@ class Module extends Model
 
   public function beforeSave(){
     $this->updated_by = BackendAuth::getUser()->id;
+  }
+
+  public function courses(){
+    return Course::select('course.*')->
+            join('competency__module__course', 'course_id', '=', 'course.id')->
+            join('competency__module', 'competency__module_id', '=', 'competency__module.id')->
+            join('module', 'module_id', '=', 'module.id')->
+            where('module.id', '=', $this->id)->where('status', '=', 'accepted')->
+            groupBy('course.id')->get();
   }
 
 }

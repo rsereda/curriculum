@@ -31,7 +31,9 @@ class StudyTree extends Model
      */
     public $hasOne = [];
     public $hasMany = [];
-    public $belongsToMany = [];
+    public $belongsToMany = [
+      'modules' => ['Kironuniversity\Curriculum\Models\Module', 'table' => 'module__study_tree']
+    ];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
