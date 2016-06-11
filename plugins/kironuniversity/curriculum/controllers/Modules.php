@@ -7,8 +7,6 @@ use Log;
 use Input;
 use Request;
 use DB;
-use Kironuniversity\Curriculum\Models\Module;
-use Kironuniversity\Curriculum\Models\Course;
 use Kironuniversity\Curriculum\Models\Competency;
 use Kironuniversity\Curriculum\Models\CompetencyModule;
 /**
