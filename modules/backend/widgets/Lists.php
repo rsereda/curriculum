@@ -350,11 +350,11 @@ class Lists extends WidgetBase
                  * Primary
                  */
                 else {
-                  $columnName = isset($column->sqlSelect)
-                     ? DbDongle::raw($this->parseTableName($column->sqlSelect, $primaryTable))
-                     : DbDongle::cast(Db::getTablePrefix() . $primaryTable . '.' . $column->columnName,'text');
+                    $columnName = isset($column->sqlSelect)
+                        ? DbDongle::raw($this->parseTableName($column->sqlSelect, $primaryTable))
+                        : DbDongle::cast(Db::getTablePrefix() . $primaryTable . '.' . $column->columnName,'text');
 
-                  $primarySearchable[] = $columnName;
+                    $primarySearchable[] = $columnName;
                 }
             }
         }
