@@ -33,6 +33,13 @@ class Competency extends Model
       'courses' => ['Kironuniversity\Curriculum\Models\Course', 'table' => 'competency__course'],
       'modules' => ['Kironuniversity\Curriculum\Models\Modules', 'table' => 'competency__module'],
       'clusters' => ['Kironuniversity\Curriculum\Models\Cluster', 'table' => 'cluster__competency'],
+      'required' =>
+      [
+        'Kironuniversity\Curriculum\Models\Competency',
+        'table' => 'competency__competency',
+        'key' => 'competency_for_id',
+        'otherKey' => 'competency_required_id',
+      ],
     ];
     public $morphTo = [];
     public $morphOne = [];

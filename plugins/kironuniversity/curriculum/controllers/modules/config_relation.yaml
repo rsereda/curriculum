@@ -27,7 +27,8 @@ competencies:
         list: $/kironuniversity/curriculum/models/competency/columns.yaml
         toolbarButtons: link|unlink|create
         showSearch: true
+        recordOnClick: "var win = window.open('/backend/kironuniversity/curriculum/competencies/update/' +this.innerHTML, '_blank');win.focus();"
   manage:
-        form: $/kironuniversity/curriculum/models/competency/fields.yaml
+        form: $/kironuniversity/curriculum/models/competency/fields_relation.yaml
         recordsPerPage: 10
         showSearch: true

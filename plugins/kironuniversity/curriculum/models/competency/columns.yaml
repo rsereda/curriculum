@@ -16,3 +16,7 @@ columns:
         relation: clusters
         valueFrom: denomination
         searchable: true
+
+    required:
+      relation: required
+      valueFrom: denomination

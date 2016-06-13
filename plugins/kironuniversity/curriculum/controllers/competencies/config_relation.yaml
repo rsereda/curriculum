@@ -1,0 +1,21 @@
+required:
+  label: Prerequisite
+  view:
+        list: $/kironuniversity/curriculum/models/competency/columns.yaml
+        toolbarButtons: link|unlink
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/competency/fields_relation.yaml
+        recordsPerPage: 10
+        showSearch: true
+
+clusters:
+  label: Cluster
+  view:
+        list: $/kironuniversity/curriculum/models/cluster/columns.yaml
+        toolbarButtons: link|unlink|create
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/cluster/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
