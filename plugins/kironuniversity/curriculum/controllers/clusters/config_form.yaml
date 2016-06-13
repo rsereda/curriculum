@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Cluster
+
+# Model Form Field configuration
+form: $/kironuniversity/curriculum/models/cluster/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\Cluster
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriculum/clusters
+
+# Create page
+create:
+    title: Create Cluster
+    redirect: kironuniversity/curriculum/clusters/update/:id
+    redirectClose: kironuniversity/curriculum/clusters
+
+# Update page
+update:
+    title: Edit Cluster
+    redirect: kironuniversity/curriculum/clusters
+    redirectClose: kironuniversity/curriculum/clusters
+
+# Preview page
+preview:
+    title: Preview Cluster

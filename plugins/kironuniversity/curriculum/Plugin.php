@@ -144,6 +144,12 @@ class Plugin extends PluginBase
             'url'         => Backend::url('kironuniversity/curriculum/languages'),
             'permissions' => ['kironuniversity.curriculum.*']
           ],
+          'clusters' => [
+            'label' => 'Cluster',
+            'icon' => 'icon-cubes',
+            'url'         => Backend::url('kironuniversity/curriculum/clusters'),
+            'permissions' => ['kironuniversity.curriculum.*']
+          ]
         ],
       ],
     ];

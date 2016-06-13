@@ -6,3 +6,7 @@ fields:
     denomination:
         label: Denomination
         type: textarea
+
+    clusters:
+      type: relation
+      nameFrom: denomination

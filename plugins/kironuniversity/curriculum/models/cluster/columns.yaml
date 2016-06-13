@@ -6,13 +6,7 @@ columns:
     id:
         label: ID
         searchable: true
-        type: number
 
     denomination:
-        label: Denomination
-        searchable: true
-
-    clusters:
-        relation: clusters
-        valueFrom: denomination
+        label: Name
         searchable: true
