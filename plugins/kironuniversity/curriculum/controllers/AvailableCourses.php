@@ -48,6 +48,9 @@ class AvailableCourses extends Controller
       $course->description = $courseData['description'];
       $course->long_description = $courseData['long_description'];
       $course->syllabus = $courseData['syllabus'];
+      if(empty($course->syllabus)){
+        $course->syllabus = '';
+      }
       $course->initiative = $courseData['initiative'];
       $course->thumbnail = $courseData['thumbnail'];
       $course->start_date = ($courseData['start_date']);
