@@ -7,6 +7,12 @@ fields:
     denomination:
         label: Name
         required: true
+        span: left
+
+    rank:
+        label: Rank in student module view (lower more important)
+        type: number
+        span: right
 
     content:
         label: Content
@@ -16,17 +22,24 @@ fields:
       label: ECTS
       type: number
       required: true
+      span: left
 
     duration:
         label: Duration
         type: number
+        span: right
 
     responsible_user:
         label: Responsible Person
         type: relation
         nameFrom: full_name
+        span: left
 
     partner_university:
         label: Partner University / Kiron
         type: relation
         nameFrom: denomination
+        span: right
+
+    da_link:
+      label: Link to DA Course Google Form
