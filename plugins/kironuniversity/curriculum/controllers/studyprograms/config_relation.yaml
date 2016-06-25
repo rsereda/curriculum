@@ -1,0 +1,11 @@
+courses:
+  label: Course
+  view:
+        list: $/kironuniversity/curriculum/models/course/columns.yaml
+        toolbarButtons: link|unlink
+        showSearch: true
+        recordOnClick: "var win = window.open('/backend/kironuniversity/curriculum/courses/update/' +this.innerHTML, '_blank');win.focus();"
+  manage:
+        form: $/kironuniversity/curriculum/models/course/fields.yaml
+        recordsPerPage: 10
+        showSearch: true

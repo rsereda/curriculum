@@ -31,3 +31,8 @@
 1.0.4:
   - Remove CP from Course
   - remove_cp_from_course.php
+1.0.5:
+  - Add Da Link and Recommdations for Modules and Courses
+  - AddDAandOrderToModule.php
+  - create_course__study_program.php
+  - create_study_program_v.php

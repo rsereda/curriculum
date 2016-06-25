@@ -106,6 +106,11 @@ class Plugin extends PluginBase
             'icon' => 'icon-university',
             'url' => Backend::url('kironuniversity/curriculum/partneruniversities'),
           ],
+          'studyprograms' => [
+            'label' => 'Recommend Courses',
+            'icon' => 'icon-star',
+            'url' => Backend::url('kironuniversity/curriculum/studyprograms'),
+          ]
         ]
       ],
       'predefined' => [
