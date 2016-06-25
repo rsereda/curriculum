@@ -35,14 +35,9 @@ fields:
         span: right
 
     workload:
-        label: Worklad
+        label: Worklad (Hours)
         type: number
         span: left
-
-    cp:
-      label: CP
-      type: number
-      span: right
 
     certificate:
       label: Certificate

@@ -117,7 +117,7 @@ class AvailableCourses extends Controller
 
     $avc = AvailableCourse::findorFail($id);
     $this->setDefaultString($avc,['long_description', 'syllabus', 'description']);
-  
+
     if(!$avc->course_id){
       $platform = Platform::where('denomination', 'ilike', $avc->initiative)->first();
       if(!$platform){
@@ -134,7 +134,6 @@ class AvailableCourses extends Controller
         'weeks' => $avc->length,
         //'code' => $avc->id + 3000,
         'course_level_id' => 1,
-        'cp' => 0,
       ];
 
       if($avc->certificate){
