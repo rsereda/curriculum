@@ -105,9 +105,19 @@ class AvailableCourses extends Controller
     Log::info('Scraped new courses: '. count($courseList). ' updated courses.');
   }
 
-  public function copy($id){
-    $avc = AvailableCourse::findorFail($id);
+  public function setDefaultString($model, $fields){
+    foreach($fields as $field){
+      if(empty($model->$field)){
+        $model->$field = '';
+      }
+    }
+  }
 
+  public function copy($id){
+
+    $avc = AvailableCourse::findorFail($id);
+    $this->setDefaultString($avc,['long_description', 'syllabus', 'description']);
+  
     if(!$avc->course_id){
       $platform = Platform::where('denomination', 'ilike', $avc->initiative)->first();
       if(!$platform){
