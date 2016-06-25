@@ -46,7 +46,6 @@ modules:
 
 courses:
   label: Course
-  readOnly: true
   view:
         list: $/kironuniversity/curriculum/models/course/columns.yaml
         toolbarButtons: link

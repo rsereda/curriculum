@@ -2,6 +2,9 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use DB;
+use Input;
+use Kironuniversity\Curriculum\Models\CompetencyModule;
 
 /**
  * Competencies Back-end Controller
@@ -24,4 +27,19 @@ class Competencies extends Controller
 
         BackendMenu::setContext('Kironuniversity.Curriculum', 'curriculum', 'competencies');
     }
+
+    public function onRelationManageAdd($id){
+      $result = $this->asExtension('RelationController')->onRelationManageAdd();
+      if(Input::has('_relation_field') && Input::get('_relation_field') ==  'courses'){
+        $courses = Input::get('checked');
+        foreach($courses as $course){
+          $competencyModules =CompetencyModule::where('competency_id', $id)->get();
+          foreach($competencyModules as $competencyModule){
+            $competencyModule->courses()->attach($course, ['status' => 'new']);
+          }
+        }
+      }
+      return $result;
+    }
+
 }
