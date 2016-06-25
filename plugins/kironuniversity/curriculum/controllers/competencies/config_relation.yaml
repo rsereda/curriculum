@@ -33,6 +33,7 @@ clusters:
 
 modules:
   label: Module
+  readOnly: true
   view:
         list: $/kironuniversity/curriculum/models/module/columns.yaml
         toolbarButtons: link
@@ -45,6 +46,7 @@ modules:
 
 courses:
   label: Course
+  readOnly: true
   view:
         list: $/kironuniversity/curriculum/models/course/columns.yaml
         toolbarButtons: link
