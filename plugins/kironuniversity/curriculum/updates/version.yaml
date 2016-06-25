@@ -28,3 +28,6 @@
   - create_competency__cluster.php
   - create_course__language.php
   - create_course__subtitle.php
+1.0.4:
+  - Remove CP from Course
+  - remove_cp_from_course.php
