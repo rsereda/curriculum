@@ -12,7 +12,7 @@
         <?php foreach($competency->courses as $course){ ?>
           <tr>
             <td>
-              <a href="javascript:;">
+              <a href="<?= Backend::url('kironuniversity/curriculum/courses/update/'.$course->id) ?>">
                 <?= $course->denomination ?>
               </a>
             </td>
