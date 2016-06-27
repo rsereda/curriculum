@@ -20,8 +20,7 @@ class Course extends Model
     'course_level_id' => 'required',
     'certificate' => 'required',
     'weeks' => 'required',
-    'workload' => 'required',
-    'cp' => 'required',
+    'workload' => 'required'
   ];
 
 
