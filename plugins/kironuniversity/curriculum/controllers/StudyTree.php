@@ -40,7 +40,7 @@ class StudyTree extends Controller
     foreach($nodes as $node){
       echo '<li>
       <a href="'.Backend::url('kironuniversity/curriculum/studytree/update/'.$node->id).'">'.
-      $node->denomination.'</a>';
+      $node->denomination.'</a>'.' ('.count($node->courses()).')';
       if($node->children->isEmpty()){
         if(!$node->modules->isEmpty()){
           echo '<ul>';
