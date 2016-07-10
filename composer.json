@@ -33,7 +33,8 @@
     "illuminate/html": "5.0.*",
     "soundasleep/html2text": "~0.2",
     "mandrill/mandrill": "dev-master",
-    "sendgrid/sendgrid": "^4.0"
+    "sendgrid/sendgrid": "^4.0",
+    "maatwebsite/excel": "^2.1"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
