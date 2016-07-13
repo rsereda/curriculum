@@ -157,6 +157,14 @@ class Plugin extends PluginBase
           ]
         ],
       ],
+
+      'matchings' => [
+        'label'       => 'Matchings',
+        'url'         => Backend::url('kironuniversity/curriculum/matchings'),
+        'icon'        => 'icon-match',
+        'permissions' => ['kironuniversity.curriculum.*'],
+        'order'       => 800,
+      ]
     ];
   }
 
