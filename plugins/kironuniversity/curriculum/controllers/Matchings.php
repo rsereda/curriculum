@@ -39,6 +39,7 @@ class Matchings extends Controller
     foreach($modules as $module){
       $indexedModules[$module->id] = $module;
     }
+    ini_set('memory_limit', '1024M');
 
     Excel::create($partnerUniversity->denomination, function($excel) use ($partnerUniversity, $indexedModules) {
       foreach($partnerUniversity->study_programs() as $studyProgram){

@@ -12,7 +12,7 @@ columns:
     searchable: true
 
   cp:
-    label: ECTS
+    label: CP
 
   duration:
     label: Duration
@@ -25,7 +25,7 @@ columns:
   responsible_user:
     label: Reposible Person
     relation: responsible_user
-    valueFrom: full_name    
+    valueFrom: full_name
 
   updatedBy:
     label: Updated By
