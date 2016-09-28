@@ -70,13 +70,7 @@ class Plugin extends PluginBase
             'icon'        => 'icon-video-camera',
             'url'         => Backend::url('kironuniversity/curriculum/courses'),
             'permissions' => ['kironuniversity.curriculum.*']
-          ],
-          'competencies' => [
-            'label'       => 'Learning outcomes',
-            'icon'        => 'icon-puzzle',
-            'url'         => Backend::url('kironuniversity/curriculum/competencies'),
-            'permissions' => ['kironuniversity.curriculum.*']
-          ],
+          ],          
           'modules' => [
             'label'       => 'Modules',
             'icon'        => 'icon-cubes',
