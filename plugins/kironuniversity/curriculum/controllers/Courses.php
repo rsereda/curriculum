@@ -29,7 +29,7 @@ class Courses extends Controller
   }
 
 
-  public function onRelationManageAdd($id){
+  /*public function onRelationManageAdd($id){
     $result = $this->asExtension('RelationController')->onRelationManageAdd();
     if(Input::has('_relation_field') && Input::get('_relation_field') ==  'competencies'){
       $competencies = Input::get('checked');
@@ -56,6 +56,6 @@ class Courses extends Controller
       }
     }
     return $this->asExtension('RelationController')->onRelationButtonUnlink();
-  }
+  }*/
 
 }

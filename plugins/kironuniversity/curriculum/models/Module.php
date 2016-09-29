@@ -43,7 +43,9 @@ class Module extends Model
   * @var array Relations
   */
   public $hasOne = [];
-  public $hasMany = [];
+  public $hasMany = [
+    'learning_outcomes' => ['Kironuniversity\Curriculum\Models\LearningOutcome'],
+  ];
   public $belongsTo = [
     'responsible_user' => ['Backend\Models\User'],
     'partner_university' => ['Kironuniversity\Curriculum\Models\PartnerUniversity'],
@@ -52,7 +54,6 @@ class Module extends Model
   public $belongsToMany = [
     'teaching_methods' => ['Kironuniversity\Curriculum\Models\TeachingMethod', 'table' => 'module__teaching_method'],
     'study_trees' => ['Kironuniversity\Curriculum\Models\StudyTree', 'table' => 'module__study_tree'],
-    'competencies' => ['Kironuniversity\Curriculum\Models\Competency', 'table' => 'competency__module'],
   ];
   public $morphTo = [];
   public $morphOne = [];

@@ -55,9 +55,9 @@ class Course extends Model
   ];
   public $belongsToMany = [
     'examtypes' => ['Kironuniversity\Curriculum\Models\ExamType', 'table' => 'course__exam_type'],
-    'competencies' => ['Kironuniversity\Curriculum\Models\Competency', 'table' => 'competency__course'],
-    'competency_modules' => ['Kironuniversity\Curriculum\Models\CompetencyModule', 'table' => 'competency__module__course','otherKey'=>'competency__module_id',
-    'pivot' => ['status','id']],
+    'learning_outcomes' => ['Kironuniversity\Curriculum\Models\LearningOutcome', 'table' => 'course__learning_outcome'],
+    /*'competency_modules' => ['Kironuniversity\Curriculum\Models\CompetencyModule', 'table' => 'competency__module__course','otherKey'=>'competency__module_id',
+    'pivot' => ['status','id']],*/
     'languages' => ['Kironuniversity\Curriculum\Models\Language', 'table' => 'course__language'],
     'subtitles' => ['Kironuniversity\Curriculum\Models\Language', 'table' => 'course__subtitle'],
   ];

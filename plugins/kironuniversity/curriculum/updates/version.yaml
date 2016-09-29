@@ -36,3 +36,9 @@
   - AddDAandOrderToModule.php
   - create_course__study_program.php
   - create_study_program_v.php
+1.0.6:
+  - Create tables for learning outcomes to replace comptencies
+  - create_learning_outcome.php
+  - create_learning_outcome__cluster.php
+  - create_learning_outcome__learning_outcome_table.php
+  - create_course__learning_outcome.php

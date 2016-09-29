@@ -1,0 +1,44 @@
+required:
+  label: Prerequisite
+  view:
+        list: $/kironuniversity/curriculum/models/learningoutcome/columns.yaml
+        toolbarButtons: link|unlink
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/learningoutcome/fields_relation.yaml
+        recordsPerPage: 10
+        showSearch: true
+
+required_by:
+  label: Prerequisite for
+  view:
+        list: $/kironuniversity/curriculum/models/learningoutcome/columns.yaml
+        toolbarButtons: link|unlink
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/learningoutcome/fields_relation.yaml
+        recordsPerPage: 10
+        showSearch: true
+
+clusters:
+  label: Cluster
+  view:
+        list: $/kironuniversity/curriculum/models/cluster/columns.yaml
+        toolbarButtons: link|unlink|create
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/cluster/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
+
+#courses:
+#  label: Course
+#  view:
+#        list: $/kironuniversity/curriculum/models/course/columns.yaml
+#        toolbarButtons: link
+#        showSearch: true
+#        recordOnClick: "var win = window.open('/backend/kironuniversity/curriculum/courses/update/' +this.innerHTML, '_blank');win.focus();"
+  #manage:
+#        form: $/kironuniversity/curriculum/models/course/fields.yaml
+#        recordsPerPage: 10
+#        showSearch: true

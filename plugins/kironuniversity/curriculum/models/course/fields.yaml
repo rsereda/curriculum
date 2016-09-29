@@ -35,7 +35,7 @@ fields:
         span: right
 
     workload:
-        label: Worklad (Hours)
+        label: Total Worklad (Hours)
         type: number
         span: left
 

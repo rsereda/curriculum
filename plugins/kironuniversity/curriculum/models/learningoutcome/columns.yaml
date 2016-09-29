@@ -6,3 +6,22 @@ columns:
     id:
         label: ID
         searchable: true
+        type: number
+
+    denomination:
+        label: Denomination
+        searchable: true
+
+    module:
+        relation: module
+        searchable: true
+        valueFrom: denomination
+
+    clusters:
+        relation: clusters
+        valueFrom: denomination
+        searchable: true
+
+    required:
+      relation: required
+      valueFrom: denomination

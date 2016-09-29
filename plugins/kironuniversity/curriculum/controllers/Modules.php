@@ -57,7 +57,7 @@ class Modules extends Controller
     DB::table('competency__module__course')->where('id',$pivotId)->update(['status' => $status]);
   }
 
-  public function onRelationManageAdd($id){
+  /*public function onRelationManageAdd($id){
     $result = $this->asExtension('RelationController')->onRelationManageAdd();
     if(Input::has('_relation_field') && Input::get('_relation_field') ==  'competencies'){
       $competencies = Input::get('checked');
@@ -85,6 +85,7 @@ class Modules extends Controller
     }
     return $this->asExtension('RelationController')->onRelationButtonUnlink();
   }
+  */
 
 
 }

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Learning Outcome
+
+# Model Form Field configuration
+form: $/kironuniversity/curriculum/models/learningoutcome/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\LearningOutcome
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriculum/learningoutcomes
+
+# Create page
+create:
+    title: Create Learning Outcome
+    redirect: kironuniversity/curriculum/learningoutcomes/update/:id
+    redirectClose: kironuniversity/curriculum/learningoutcomes
+
+# Update page
+update:
+    title: Edit Learning Outcome
+    redirect: kironuniversity/curriculum/learningoutcomes
+    redirectClose: kironuniversity/curriculum/learningoutcomes
+
+# Preview page
+preview:
+    title: Preview Learning Outcome

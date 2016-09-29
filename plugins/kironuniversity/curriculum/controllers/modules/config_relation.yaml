@@ -1,4 +1,3 @@
-
 study_trees:
   label: place in study tree
   view:
@@ -21,14 +20,14 @@ teaching_methods:
         recordsPerPage: 10
         showSearch: true
 
-competencies:
+learning_outcomes:
   label: learning outcome
   view:
-        list: $/kironuniversity/curriculum/models/competency/columns.yaml
-        toolbarButtons: link|unlink|create
+        list: $/kironuniversity/curriculum/models/learningoutcome/columns.yaml
+        toolbarButtons: create|delete
         showSearch: true
-        recordOnClick: "var win = window.open('/backend/kironuniversity/curriculum/competencies/update/' +this.innerHTML, '_blank');win.focus();"
+        #recordOnClick: "var win = window.open('/backend/kironuniversity/curriculum/learningoutcomes/update/' +this.innerHTML, '_blank');win.focus();"
   manage:
-        form: $/kironuniversity/curriculum/models/competency/fields_relation.yaml
+        form: $/kironuniversity/curriculum/models/learningoutcome/fields_relation.yaml
         recordsPerPage: 10
         showSearch: true

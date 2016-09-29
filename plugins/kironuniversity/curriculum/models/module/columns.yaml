@@ -23,9 +23,10 @@ columns:
     select: denomination
 
   responsible_user:
-    label: Reposible Person
+    label: Responsible Person
     relation: responsible_user
-    valueFrom: full_name
+    select: "concat(first_name, ' ', last_name)"
+    searchable: true
 
   updatedBy:
     label: Updated By

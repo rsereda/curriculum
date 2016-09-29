@@ -7,11 +7,14 @@ fields:
         label: Denomination
         type: textarea
 
-    module:
-      label: Module
-      type: relation
+    clusters:
+      label: Clusters
+      type: taglist
+      mode: relation
       nameFrom: denomination
 
-    ready:
-      label: Ready
-      type: switch
+    required:
+      label: Prerequisites
+      type: taglist
+      mode: relation
+      nameFrom: denomination

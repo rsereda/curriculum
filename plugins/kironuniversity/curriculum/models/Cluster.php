@@ -16,7 +16,7 @@ class Cluster extends Model
     /**
      * @var array Guarded fields
      */
-    protected $guarded = ['*'];
+    protected $guarded = ['id'];
 
     /**
      * @var array Fillable fields
@@ -30,7 +30,7 @@ class Cluster extends Model
     public $hasMany = [];
     public $belongsTo = [];
     public $belongsToMany = [
-      'competencies' => ['Kironuniversity\Curriculum\Models\Competency', 'table' => 'cluster__competency'],
+      'learning_outcomes' => ['Kironuniversity\Curriculum\Models\LearningOutcome', 'table' => 'cluster__learning_outcome'],
     ];
     public $morphTo = [];
     public $morphOne = [];
