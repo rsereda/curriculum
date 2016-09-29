@@ -1,0 +1,24 @@
+scopes:
+
+  partner_university:
+    label: Partner University
+    modelClass: Kironuniversity\Curriculum\Models\PartnerUniversity
+    conditions: partner_university_id in (:filtered)
+    nameFrom: denomination
+
+  responsible_user:
+    label: Responsible Person
+    modelClass: Backend\Models\User
+    conditions: responsible_user_id in (:filtered)
+    nameFrom: last_name
+
+  updated_by:
+    label: Updated By
+    modelClass: Backend\Models\User
+    conditions: updated_by in (:filtered)
+    nameFrom: last_name
+  #modules:
+  #  label: Modules
+  #  modelClass: Kironuniversity\Curriculum\Models\Module
+  #  conditions: id in (select id FROM account WHERE blocked = false)module_id in (:filtered)
+  #  nameFrom: denomination

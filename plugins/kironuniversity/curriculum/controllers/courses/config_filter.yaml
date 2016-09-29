@@ -1,0 +1,24 @@
+scopes:
+
+  platform:
+    label: Platforms
+    modelClass: Kironuniversity\Curriculum\Models\Platform
+    conditions: platform_id in (:filtered)
+    nameFrom: denomination
+
+  course_level:
+    label: Level
+    modelClass: Kironuniversity\Curriculum\Models\Level
+    conditions: course_level_id in (:filtered)
+    nameFrom: denomination
+
+  language:
+    label: Language
+    modelClass: Kironuniversity\Curriculum\Models\Language
+    conditions: id in (select id from course__language where id in (:filtered))
+    nameFrom: denomination
+  #modules:
+  #  label: Modules
+  #  modelClass: Kironuniversity\Curriculum\Models\Module
+  #  conditions: id in (select id FROM account WHERE blocked = false)module_id in (:filtered)
+  #  nameFrom: denomination
