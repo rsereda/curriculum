@@ -7,15 +7,21 @@ scopes:
     nameFrom: denomination
 
   course_level:
-    label: Level
+    label: Levels
     modelClass: Kironuniversity\Curriculum\Models\Level
     conditions: course_level_id in (:filtered)
     nameFrom: denomination
 
   language:
-    label: Language
+    label: Languages
     modelClass: Kironuniversity\Curriculum\Models\Language
     conditions: id in (select id from course__language where id in (:filtered))
+    nameFrom: denomination
+
+  module:
+    label: Modules
+    modelClass: Kironuniversity\Curriculum\Models\Module
+    conditions: id in (select id from course__module where id in (:filtered))
     nameFrom: denomination
   #modules:
   #  label: Modules

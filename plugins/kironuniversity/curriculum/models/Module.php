@@ -54,6 +54,7 @@ class Module extends Model
   public $belongsToMany = [
     'teaching_methods' => ['Kironuniversity\Curriculum\Models\TeachingMethod', 'table' => 'module__teaching_method'],
     'study_trees' => ['Kironuniversity\Curriculum\Models\StudyTree', 'table' => 'module__study_tree'],
+    'courses' => ['Kironuniversity\Curriculum\Models\Course', 'table' => 'course__module'],
   ];
   public $morphTo = [];
   public $morphOne = [];
@@ -63,15 +64,6 @@ class Module extends Model
 
   public function beforeSave(){
     $this->updated_by = BackendAuth::getUser()->id;
-  }
-
-  public function courses(){
-    return Course::select('course.*')->
-            join('competency__module__course', 'course_id', '=', 'course.id')->
-            join('competency__module', 'competency__module_id', '=', 'competency__module.id')->
-            join('module', 'module_id', '=', 'module.id')->
-            where('module.id', '=', $this->id)->where('status', '=', 'accepted')->
-            groupBy('course.id')->get();
   }
 
 }

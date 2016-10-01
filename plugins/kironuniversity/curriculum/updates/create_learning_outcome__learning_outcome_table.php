@@ -17,7 +17,6 @@ class CreateCompetencyCompetencyTable extends Migration
             $table->integer('learning_outcome_for_id')->unsigned();
             $table->foreign('learning_outcome_for_id')->references('id')->on('learning_outcome');
             $table->unique(['learning_outcome_required_id', 'learning_outcome_for_id']);
-            $table->boolean('ready')->default(false);
             $table->softDeletes();
             $table->timestamp('created_at')->default(DB::raw('now()'));
             $table->timestamp('updated_at')->default(DB::raw('now()'));

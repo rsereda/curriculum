@@ -5,18 +5,19 @@ use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
 use DB;
 
-class CreateCompetencyCourseTable extends Migration
+class CreateCourseModuleTable extends Migration
 {
     public function up()
     {
-        Schema::create('course__learning_outcome', function(Blueprint $table) {
+        Schema::create('course__module', function(Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('learning_outcome_id')->unsigned();
-            $table->foreign('learning_outcome_id')->references('id')->on('learning_outcome');
+            $table->integer('module_id')->unsigned();
+            $table->foreign('module_id')->references('id')->on('module');
             $table->integer('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('course');
-            $table->unique(['learning_outcome_id', 'course_id']);
+            $table->unique(['module_id', 'course_id']);
+            $table->integer('sort_order')->default(DB::raw('lastval()'));
             $table->softDeletes();
             $table->timestamp('created_at')->default(DB::raw('now()'));
             $table->timestamp('updated_at')->default(DB::raw('now()'));
@@ -25,7 +26,7 @@ class CreateCompetencyCourseTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('learning_outcome__course');
+        Schema::dropIfExists('module__course');
     }
 }
 ?>

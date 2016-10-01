@@ -18,11 +18,13 @@ class Modules extends Controller
     'Backend.Behaviors.FormController',
     'Backend.Behaviors.ListController',
     'Backend.Behaviors.RelationController',
+    'Backend.Behaviors.ReorderController',
   ];
 
   public $formConfig = 'config_form.yaml';
   public $listConfig = 'config_list.yaml';
   public $relationConfig = 'config_relation.yaml';
+  public $reorderConfig = 'config_reorder.yaml';
 
   public function __construct()
   {
@@ -32,8 +34,13 @@ class Modules extends Controller
 
   public function update($recordId, $context = null)
   {
+
     // Call the FormController behavior update() method
     return $this->asExtension('FormController')->update($recordId, $context);
+  }
+
+  public function formBeforeUpdate($model){
+  //  dd($this->prepareModelsToSave($model, $this->formWidget->getSaveData()));
   }
 
   private function makeCMCList($id){
@@ -57,35 +64,40 @@ class Modules extends Controller
     DB::table('competency__module__course')->where('id',$pivotId)->update(['status' => $status]);
   }
 
+  public function reorderExtendQuery($query)
+  {
+    $query->where('module_id', '=', $this->vars['formModel']->id);
+  }
+
   /*public function onRelationManageAdd($id){
-    $result = $this->asExtension('RelationController')->onRelationManageAdd();
-    if(Input::has('_relation_field') && Input::get('_relation_field') ==  'competencies'){
-      $competencies = Input::get('checked');
-      foreach($competencies as $competency){
-        $competencyModel = Competency::find($competency);
-        $courses = $competencyModel->courses->lists('id');
-        $competencyModule =CompetencyModule::where('module_id', $id)->where('competency_id', $competency)->first();
-        foreach($courses as $course){
-          $competencyModule->courses()->attach($course, ['status' => 'new']);
-        }
-      }
-    }
-    return $result;
-  }
+  $result = $this->asExtension('RelationController')->onRelationManageAdd();
+  if(Input::has('_relation_field') && Input::get('_relation_field') ==  'competencies'){
+  $competencies = Input::get('checked');
+  foreach($competencies as $competency){
+  $competencyModel = Competency::find($competency);
+  $courses = $competencyModel->courses->lists('id');
+  $competencyModule =CompetencyModule::where('module_id', $id)->where('competency_id', $competency)->first();
+  foreach($courses as $course){
+  $competencyModule->courses()->attach($course, ['status' => 'new']);
+}
+}
+}
+return $result;
+}
 
 
 
-  public function onRelationButtonUnlink($id){
-    if(Input::has('_relation_field') && Input::get('_relation_field') ==  'competencies'){
-      $competencies = Input::get('checked');
-      foreach($competencies as $competency){
-        $competencyModule =CompetencyModule::where('module_id', $id)->where('competency_id', $competency)->first();
-        $competencyModule->courses()->sync([]);
-      }
-    }
-    return $this->asExtension('RelationController')->onRelationButtonUnlink();
-  }
-  */
+public function onRelationButtonUnlink($id){
+if(Input::has('_relation_field') && Input::get('_relation_field') ==  'competencies'){
+$competencies = Input::get('checked');
+foreach($competencies as $competency){
+$competencyModule =CompetencyModule::where('module_id', $id)->where('competency_id', $competency)->first();
+$competencyModule->courses()->sync([]);
+}
+}
+return $this->asExtension('RelationController')->onRelationButtonUnlink();
+}
+*/
 
 
 }

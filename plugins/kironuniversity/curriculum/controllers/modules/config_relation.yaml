@@ -31,3 +31,15 @@ learning_outcomes:
         form: $/kironuniversity/curriculum/models/learningoutcome/fields_relation.yaml
         recordsPerPage: 10
         showSearch: true
+
+
+courses:
+  label: Course
+  view:
+        list: $/kironuniversity/curriculum/models/course/columns.yaml
+        toolbarButtons: link
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/course/fields.yaml
+        recordsPerPage: 10
+        showSearch: true

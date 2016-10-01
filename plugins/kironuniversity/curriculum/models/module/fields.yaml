@@ -43,3 +43,39 @@ tabs:
 
     da_link:
       label: Link to DA Course Google Form
+
+    learning_outcomes:
+      label: Learning Outcomes
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      relation: learning_outcomes
+      disabled: true
+
+    study_trees:
+      label: Places in study tree
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      relation: study_trees
+      disabled: true
+
+    teaching_methods:
+      label: Teachong Methods
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: teaching_methods
+
+    courses:
+      label: Courses
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: courses
+      tab: Courses
+
+    course_order:
+      label: Order Courses
+      type: partial
+      path: $/kironuniversity/curriculum/views/_sort.htm
+      disabled: true
+      tab: Courses

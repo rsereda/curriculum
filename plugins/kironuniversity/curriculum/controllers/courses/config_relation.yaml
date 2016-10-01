@@ -1,11 +1,11 @@
-learning_outcomes:
-  label: learning outcome
+modules:
+  label: module
   view:
-        list: $/kironuniversity/curriculum/models/learningoutcome/columns.yaml
+        list: $/kironuniversity/curriculum/models/module/columns.yaml
         toolbarButtons: link|unlink
         showSearch: true
-        recordOnClick: "var win = window.open('/backend/kironuniversity/curriculum/learning_outcomes/update/' +this.innerHTML, '_blank');win.focus();"
+        recordOnClick: "var win = window.open('/backend/kironuniversity/curriculum/modules/update/' +this.innerHTML, '_blank');win.focus();"
   manage:
-        form: $/kironuniversity/curriculum/models/learningoutcome/fields_relation.yaml
+        form: $/kironuniversity/curriculum/models/module/fields.yaml
         recordsPerPage: 10
         showSearch: true

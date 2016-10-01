@@ -1,0 +1,12 @@
+# ===================================
+#  Reorder Behavior Config
+# ===================================
+
+# Reorder Title
+title: Reorder Courses
+
+# Attribute name
+nameFrom: course_name
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\CourseModule

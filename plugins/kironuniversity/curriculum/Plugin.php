@@ -168,6 +168,20 @@ class Plugin extends PluginBase
     ];
   }
 
+  public function registerFormWidgets()
+  {
+    return [
+      'Kironuniversity\Curriculum\FormWidgets\RelationManager' => [
+        'label' => 'Relation Manager',
+        'code'  => 'relationmanager'
+      ],
+      'Kironuniversity\Curriculum\FormWidgets\SortingWidget' => [
+        'label' => 'Sorting Widget',
+        'code'  => 'sorting'
+      ]
+    ];
+  }
+
   public function registerSchedule($schedule)
   {
     // Update the AvailableCourse database once a day

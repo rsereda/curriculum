@@ -23,15 +23,6 @@
     <?= $this->formRender() ?>
   </div>
 
-  <h3>Learning outcomes </h3>
-  <?= $this->relationRender('learning_outcomes') ?>
-
-  <h3>Places in study tree</h3>
-  <?= $this->relationRender('study_trees') ?>
-
-  <h3>Teaching Methods</h3>
-  <?= $this->relationRender('teaching_methods') ?>
-
   <div class="form-buttons">
     <div class="loading-indicator-container">
       <button
@@ -77,6 +68,7 @@
 
   $('html').on('ajaxBeforeUpdate', function(event,context) {
     if(context.handler == 'onRelationManageAdd' || context.handler == 'onRelationButtonUnlink'){
+      console.log('Reload');
       reloadCMCList();
     }
   });
