@@ -13,7 +13,7 @@ class CourseModule extends Model
   /**
   * @var string The database table used by the model.
   */
-  public $table = 'course__module';
+  public $table = 'course__module_agg';  
 
   /**
   * @var array Guarded fields

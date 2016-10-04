@@ -32,6 +32,16 @@ learning_outcomes:
         recordsPerPage: 10
         showSearch: true
 
+course_groups:
+  label: course group
+  view:
+        list: $/kironuniversity/curriculum/models/coursegroup/columns.yaml
+        toolbarButtons: create|delete
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/coursegroup/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
 
 courses:
   label: Course

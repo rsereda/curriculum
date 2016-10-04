@@ -16,13 +16,6 @@ fields:
       label: Ready
       type: switch
 
-    course_groups:
-      label: Course Groups
-      type: partial
-      path: $/kironuniversity/curriculum/views/_relation.htm
-      disabled: true
-      relation: course_groups
-
     clusters:
       label: Clusters
       type: partial

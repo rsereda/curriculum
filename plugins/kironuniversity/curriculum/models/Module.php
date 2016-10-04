@@ -45,6 +45,7 @@ class Module extends Model
   public $hasOne = [];
   public $hasMany = [
     'learning_outcomes' => ['Kironuniversity\Curriculum\Models\LearningOutcome'],
+    'course_groups' => ['Kironuniversity\Curriculum\Models\CourseGroup'],
   ];
   public $belongsTo = [
     'responsible_user' => ['Backend\Models\User'],

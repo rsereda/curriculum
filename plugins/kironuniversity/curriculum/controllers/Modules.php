@@ -7,6 +7,8 @@ use Log;
 use Input;
 use Request;
 use DB;
+use App;
+use Config;
 use Kironuniversity\Curriculum\Models\Competency;
 use Kironuniversity\Curriculum\Models\CompetencyModule;
 /**
@@ -40,7 +42,7 @@ class Modules extends Controller
   }
 
   public function formBeforeUpdate($model){
-  //  dd($this->prepareModelsToSave($model, $this->formWidget->getSaveData()));
+    //  dd($this->prepareModelsToSave($model, $this->formWidget->getSaveData()));
   }
 
   private function makeCMCList($id){
@@ -67,6 +69,17 @@ class Modules extends Controller
   public function reorderExtendQuery($query)
   {
     $query->where('module_id', '=', $this->vars['formModel']->id);
+  }
+
+  public function onRelationButtonCreate($id){
+    Config::set('current_module', $id);
+    return $this->asExtension('RelationController')->onRelationButtonCreate();
+  }
+
+  public function onRelationClickViewList($id)
+  {
+    Config::set('current_module', $id);
+    return $this->asExtension('RelationController')->onRelationClickViewList();
   }
 
   /*public function onRelationManageAdd($id){

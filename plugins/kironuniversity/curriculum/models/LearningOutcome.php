@@ -16,7 +16,7 @@ class LearningOutcome extends Model
     /**
      * @var array Guarded fields
      */
-    protected $guarded = ['*'];
+    protected $guarded = ['id'];
 
     /**
      * @var array Fillable fields

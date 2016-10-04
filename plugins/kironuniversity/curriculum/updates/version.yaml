@@ -47,3 +47,9 @@
   - create_course_groups_table.php
   - create_course_group__learning_outcome.php
   - create_course_group__course__module.php
+1.0.8:
+  - Reference Module in Course Group
+  - alter_course_group.php
+1.0.9:
+  - Create Course Module Agg
+  - create_course_module_agg.php

@@ -4,6 +4,7 @@
 tabs:
   defaultTab: Module
   fields:
+    
     denomination:
         label: Name
         required: true
@@ -49,6 +50,13 @@ tabs:
       type: partial
       path: $/kironuniversity/curriculum/views/_relation.htm
       relation: learning_outcomes
+      disabled: true
+
+    course_groups:
+      label: Course Groups
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      relation: course_groups
       disabled: true
 
     study_trees:

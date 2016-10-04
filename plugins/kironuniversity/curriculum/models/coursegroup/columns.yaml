@@ -10,9 +10,9 @@ columns:
     learning_outcomes:
         relation: learning_outcomes
         searchable: true
-        valueFrom: denomination
+        select: denomination
 
     courses:
         relation: courses
         searchable: true
-        valueFrom: denomination
+        select: course_denomination
