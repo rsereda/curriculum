@@ -3,6 +3,19 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+
+    denomination:
+      label: Name
+      searchable: true
+
+    learning_outcomes:
+      label: Learning Outcomes
+      type: taglist
+      mode: relation
+      nameFrom: denomination
+
+    courses:
+      label: Courses
+      type: taglist
+      mode: relation
+      nameFrom: course_denomination

@@ -56,6 +56,13 @@ class Module extends Model
     'study_trees' => ['Kironuniversity\Curriculum\Models\StudyTree', 'table' => 'module__study_tree'],
     'courses' => ['Kironuniversity\Curriculum\Models\Course', 'table' => 'course__module'],
   ];
+
+  public $hasManyThrough = [
+       'course_groups' => [
+           'Kironuniversity\Curriculum\Models\CourseGroup',
+           'through' => 'Kironuniversity\Curriculum\Models\LearningOutcome'
+       ],
+   ];
   public $morphTo = [];
   public $morphOne = [];
   public $morphMany = [];

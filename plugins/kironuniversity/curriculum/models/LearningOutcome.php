@@ -48,6 +48,10 @@ class LearningOutcome extends Model
         'otherKey' => 'learning_outcome_for_id',
         'key' => 'learning_outcome_required_id',
       ],
+      'course_groups' => [
+        'Kironuniversity\Curriculum\Models\CourseGroup',
+        'table' => 'course_group__learning_outcome',
+      ]
     ];
     public $morphTo = [];
     public $morphOne = [];

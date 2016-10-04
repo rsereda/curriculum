@@ -32,7 +32,7 @@ class CourseGroup extends Model
     public $belongsToMany = [
       'courses' => [
         'Kironuniversity\Curriculum\Models\CourseModule',
-        'otherKey' => 'course_module_id',
+        'otherKey' => 'course__module_id',
         'table' => 'course_group__course__module'
       ],
       'learning_outcomes' => [

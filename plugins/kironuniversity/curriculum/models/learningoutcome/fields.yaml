@@ -15,3 +15,31 @@ fields:
     ready:
       label: Ready
       type: switch
+
+    course_groups:
+      label: Course Groups
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: course_groups
+
+    clusters:
+      label: Clusters
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: clusters
+
+    required:
+      label: Prerequisite
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: required
+
+    required_by:
+      label: Prerequisite for
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: required_by

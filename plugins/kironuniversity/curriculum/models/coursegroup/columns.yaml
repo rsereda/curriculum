@@ -3,6 +3,16 @@
 # ===================================
 
 columns:
-    id:
-        label: ID
+    denomination:
+        label: Name
         searchable: true
+
+    learning_outcomes:
+        relation: learning_outcomes
+        searchable: true
+        valueFrom: denomination
+
+    courses:
+        relation: courses
+        searchable: true
+        valueFrom: denomination

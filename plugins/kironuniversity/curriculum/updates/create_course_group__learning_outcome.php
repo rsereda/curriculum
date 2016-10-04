@@ -17,7 +17,6 @@ class Createcourse_grouplearning_outcomeTable extends Migration
             $table->integer('course_group_id')->unsigned();
             $table->foreign('course_group_id')->references('id')->on('course_group');
             $table->unique(['learning_outcome_id', 'course_group_id']);
-            $table->integer('sort_order')->default(DB::raw('lastval()'));
             $table->softDeletes();
             $table->timestamp('created_at')->default(DB::raw('now()'));
             $table->timestamp('updated_at')->default(DB::raw('now()'));
