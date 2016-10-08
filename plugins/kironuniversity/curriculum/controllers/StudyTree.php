@@ -49,7 +49,7 @@ class StudyTree extends Controller
             <a href="'.Backend::url('kironuniversity/curriculum/modules/update/'.$module->id).'">'.
             $module->denomination.'</a>';
             echo '(';
-            foreach($module->courses() as $course){
+            foreach($module->usedCourses() as $course){
               echo '<a href="'.Backend::url('kironuniversity/curriculum/courses/update/'.$course->id).'">'.
               $course->denomination.'</a>';
             }
@@ -67,6 +67,7 @@ class StudyTree extends Controller
   }
 
   public function view(){
+    BackendMenu::setContext('Kironuniversity.Curriculum', 'curriculum', 'universitytree');
     $this->vars['roots'] = StudyTreeModel::whereNull('parent_id')->get();
   }
 }

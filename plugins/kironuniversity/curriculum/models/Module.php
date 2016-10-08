@@ -74,4 +74,15 @@ class Module extends Model
     $this->updated_by = BackendAuth::getUser()->id;
   }
 
+  public function usedCourses(){
+   return Course::select('course.*')->
+           join('course__module', 'course_id', '=', 'course.id')->
+           join('course_group__course__module', 'course__module_id', '=', 'course__module.id')->
+           join('course_group__learning_outcome', 'course_group__course__module.course_group_id', '=', 'course_group__learning_outcome.course_group_id')->
+           join('learning_outcome', 'learning_outcome_id', '=', 'learning_outcome.id')->
+           where('learning_outcome.module_id', '=', $this->id)->
+           groupBy('course.id')->get();
+
+  }
+
 }
