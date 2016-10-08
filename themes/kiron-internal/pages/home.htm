@@ -1,7 +1,11 @@
 title = "Home"
-url = "/home"
+url = "/"
 is_hidden = 0
 layout = "default"
+==
+function onStart(){
+  return Redirect::to('/backend');
+}
 ==
 {% put head %}
     <p>Place this text in the name placeholder</p>

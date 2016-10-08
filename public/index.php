@@ -1,1 +1,0 @@
-/home/forge/curriculum.kiron.ngo/index.php
