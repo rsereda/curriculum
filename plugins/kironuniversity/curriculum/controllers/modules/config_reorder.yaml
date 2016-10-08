@@ -9,4 +9,4 @@ title: Reorder Courses
 nameFrom: course_name
 
 # Model Class name
-modelClass: Kironuniversity\Curriculum\Models\CourseModule
+modelClass: Kironuniversity\Curriculum\Models\CourseModuleOrder
