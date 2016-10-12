@@ -17,6 +17,9 @@ class Module extends Model
 
   use \October\Rain\Database\Traits\Validation;
 
+  use \October\Rain\Database\Traits\SoftDelete;
+  protected $dates = ['deleted_at'];
+
   public $rules = [
         'denomination' => 'required',
         'duration' => 'numeric',
@@ -67,7 +70,24 @@ class Module extends Model
    ];
   public $morphTo = [];
   public $morphOne = [];
-  public $morphMany = [];
+
+
+  use \October\Rain\Database\Traits\Revisionable;
+
+  /**
+  * @var array Monitor these attributes for changes.
+  */
+  protected $revisionable = ['denomination', 'cp', 'duration','responsible_user_id',
+    'da_link', 'rank', 'ready'];
+
+  /**
+  * @var array Relations
+  */
+  public $morphMany = [
+    'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
+  ];
+
+
   public $attachOne = [];
   public $attachMany = [];
 

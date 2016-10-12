@@ -13,6 +13,9 @@ class LearningOutcome extends Model
      */
     public $table = 'learning_outcome';
 
+    use \October\Rain\Database\Traits\SoftDelete;
+    protected $dates = ['deleted_at'];
+
     /**
      * @var array Guarded fields
      */

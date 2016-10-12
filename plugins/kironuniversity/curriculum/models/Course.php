@@ -14,6 +14,9 @@ class Course extends Model
   public $table = 'course';
   use \October\Rain\Database\Traits\Validation;
 
+  use \October\Rain\Database\Traits\SoftDelete;
+  protected $dates = ['deleted_at'];
+
   public $rules = [
     'denomination' => 'required',
     'platform_id' => 'required',
@@ -22,6 +25,9 @@ class Course extends Model
     'weeks' => 'required',
     'workload' => 'required'
   ];
+
+
+
 
 
   /**
@@ -65,7 +71,24 @@ class Course extends Model
   ];
   public $morphTo = [];
   public $morphOne = [];
-  public $morphMany = [];
+
+
+  use \October\Rain\Database\Traits\Revisionable;
+
+  /**
+  * @var array Monitor these attributes for changes.
+  */
+  protected $revisionable = ['denomination', 'workload', 'start_date', 'platform_id', 'end_date',
+    'university', 'certificate', 'link', 'syllabus', 
+    'short_description', 'long_description', 'ready', 'notes', 'lecturer_contacted'];
+
+  /**
+  * @var array Relations
+  */
+  public $morphMany = [
+    'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
+  ];
+
   public $attachOne = [];
   public $attachMany = [];
 

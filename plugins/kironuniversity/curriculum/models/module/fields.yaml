@@ -4,7 +4,7 @@
 tabs:
   defaultTab: Module
   fields:
-    
+
     denomination:
         label: Name
         required: true
@@ -79,11 +79,4 @@ tabs:
       path: $/kironuniversity/curriculum/views/_relation.htm
       disabled: true
       relation: courses
-      tab: Courses
-
-    course_order:
-      label: Order Courses
-      type: partial
-      path: $/kironuniversity/curriculum/views/_sort.htm
-      disabled: true
       tab: Courses

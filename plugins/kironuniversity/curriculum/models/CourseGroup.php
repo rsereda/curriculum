@@ -13,6 +13,9 @@ class CourseGroup extends Model
      */
     public $table = 'course_group';
 
+    use \October\Rain\Database\Traits\SoftDelete;
+    protected $dates = ['deleted_at'];
+
     /**
      * @var array Guarded fields
      */

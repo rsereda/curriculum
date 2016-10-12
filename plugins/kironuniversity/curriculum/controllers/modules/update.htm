@@ -7,7 +7,7 @@
 
 <?php if (!$this->fatalError): ?>
 
-  
+
 
   <?php
     $this->reorder();
@@ -69,12 +69,3 @@
   <p><a href="<?= Backend::url('kironuniversity/curriculum/modules') ?>" class="btn btn-default">Return to modules list</a></p>
 
 <?php endif ?>
-<script>
-
-  $('html').on('ajaxBeforeUpdate', function(event,context) {
-    if(context.handler == 'onRelationManageAdd' || context.handler == 'onRelationButtonUnlink'){
-      console.log('Reload');
-      reloadCMCList();
-    }
-  });
-</script>
