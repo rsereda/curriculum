@@ -61,3 +61,7 @@
   - add_softdel_and_ready_to_module.php
   - add_softdel_and_ready_to_course_group.php
   - add_softdel_and_ready_to_course.php
+1.1.2:
+  - Add Course Prerequisites and treenode take first for guidance
+  - add_take_for_guidance_study_trees_table.php
+  - create_course_courses_table.php
