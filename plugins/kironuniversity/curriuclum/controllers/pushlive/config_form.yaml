@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Push Live
+
+# Model Form Field configuration
+form: $/kironuniversity/curriuclum/models/pushlive/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriuclum\Models\PushLive
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriuclum/pushlive
+
+# Create page
+create:
+    title: Create Push Live
+    redirect: kironuniversity/curriuclum/pushlive/update/:id
+    redirectClose: kironuniversity/curriuclum/pushlive
+
+# Update page
+update:
+    title: Edit Push Live
+    redirect: kironuniversity/curriuclum/pushlive
+    redirectClose: kironuniversity/curriuclum/pushlive
+
+# Preview page
+preview:
+    title: Preview Push Live
