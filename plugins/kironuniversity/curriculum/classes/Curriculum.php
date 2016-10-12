@@ -11,7 +11,9 @@ use Kironuniversity\Curriculum\Models\CourseGroup;
 use Kironuniversity\Curriculum\Models\LearningOutcome;
 use Kironuniversity\Curriculum\Models\StudyTree;
 use Kironuniversity\Curriculum\Models\StudyProgram;
+use Kironuniversity\Curriculum\Models\CourseModuleStudent;
 use Kironuniversity\Curriculum\Classes\LPSolve;
+use Kironuniversity\General\Models\Student;
 
 
 /*
@@ -21,24 +23,24 @@ class Curriculum
 {
 
   protected $modules = [];
-  protected $studyProgramID = null;
+  protected $student;
 
   public function __construct($studentID = null, $studyProgramID = null){
     if($studentID == null){
+      $this->student = new Student();
       if($studyProgramID == null){
-
-        $this->studyProgramID = StudyProgram::first()->id;
+        $this->student->study_program_id = StudyProgram::first()->id;
       }else{
-        $this->studyProgramID = $studyProgramID;
+        $this->student->study_program_id = $studyProgramID;
       }
     }else{
-      //Set ID For Student
+      $this->student = Student::findOrFail($studentID);
     }
     $this->loadModules();
   }
 
   protected function loadModules(){
-    $this->modules = Module::has('courses')->studyProgram($this->studyProgramID)->with(['learning_outcomes.course_groups',
+    $this->modules = Module::has('courses')->studyProgram($this->student->study_program_id)->with(['learning_outcomes.course_groups',
     'course_groups' => function($query){
       $query->has('learning_outcomes');
     },'course_groups.courses','courses'])->get();
@@ -55,18 +57,26 @@ class Curriculum
     $moduleCount = count($this->modules);
     $lastVar = 0;
     $cmIDToVar = [];
+    $varToCM = [];
     $cgIDToVar = [];
     $coursesCMVars = [];
 
 
-
+    $taken = $this->student->courses->lists('id');
     //Building Minimum Workload constriants
     foreach($this->modules as $module){
       $constraint = [];
       foreach($module->courses as $course){
-        //$constraint[$lastVar] = (int)$course->workload;
-        $f[$lastVar] = (int)$course->workload;
+
+        if(in_array($course->id, $taken)){
+          //Make taken courses free to use
+          $f[$lastVar] = 0;
+        } else {
+          $f[$lastVar] = (int)$course->workload;
+        }
         $cmIDToVar[$course->pivot->id] = $lastVar;
+        $varToCM[$lastVar] = ['course_id' => $course->id, 'module_id' => $module->id, 'student_id' => $this->student->id];
+        //$constraint[$lastVar] = (int)$course->workload;
 
         //Store for last constraint
         if(array_key_exists($course->id, $coursesCMVars)){
@@ -106,8 +116,6 @@ class Curriculum
       }
     }
 
-
-
     //Building learning outcome constraints
     foreach($this->modules as $module){
       foreach($module->learning_outcomes as $learning_outcome){
@@ -123,10 +131,12 @@ class Curriculum
       }
     }
 
+
+
     //Use Course only onces
     foreach($coursesCMVars as $cmVars){
       $constraint = [];
-      foreach($cmVars as $var){
+      foreach($cmVars as $courseID => $var){
         $constraint[$var] = 1;
       }
       $A[] = $constraint;
@@ -141,14 +151,44 @@ class Curriculum
     $ret = LPSolve::solve($f,$A,$b,$e,null,$upper_bounds,$xint);
     $time_end = microtime(true);
     $time = $time_end - $time_start;
-    dd($time,$coursesCMVars,$cmIDToVar,$A,$e,$b,$f,$ret);
+    if($ret[3] != 0){
+      Log::error('Could not generate optimal solution for student '.$this->student->id);
+      Log::error($ret);
+    }else{
+      //dd($varToCM);
+      $cmvars = count($varToCM);
+      $cms = [];
+      foreach($ret[1] as $var => $val){
+        if($var >= $cmvars){
+          break;
+        }
+        if($val == 1){
+          $cms[] = $varToCM[$var];
+        }
+      }
+      $this->writeCurriculum($cms);
+      dd($ret,$cmvars,$cms);
+    }
+    //dd($time,$coursesCMVars,$cmIDToVar,$A,$e,$b,$f,$ret);
   }
-
-
-
-
 
   public function getModules(){
     return $this->modules;
+  }
+
+  public function writeCurriculum($cms){
+    if(!empty($this->student->id) and $this->student->id > 0){
+      DB::beginTransaction();
+      try{
+        CourseModuleStudent::where('student_id',$this->student->id)->delete();
+        CourseModuleStudent::insert($cms);
+      }
+      catch(\Exception $e)
+      {
+        DB::rollBack();
+        throw $e;
+      }
+      DB::commit();
+    }
   }
 }

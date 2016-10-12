@@ -1,0 +1,23 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    denomination:
+        label: Name
+        span: left
+
+    cat:
+        label: Status Category
+        span: right
+        type: dropdown
+        options:
+          pending: Pending
+          in-process: In Process
+          revalidate: Revalidate
+          accepted: Accepted
+          rejected: Rejected
+
+    mail_template:
+        label: Mail Template
+        type: textarea

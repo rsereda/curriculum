@@ -1,0 +1,11 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    denomination:
+        label: Denomination
+
+    description:
+        label: Description
+        type: textarea

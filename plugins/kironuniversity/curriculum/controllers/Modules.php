@@ -90,11 +90,14 @@ class Modules extends Controller
 
 
     echo "<pre>";
-    for($i=1;$i<=100;$i++){
-      $curriculum = new Curriculum();
+    $time_start = microtime(true);
+    //for($i=1;$i<=100;$i++){
+      $curriculum = new Curriculum(1);
       $curriculum->buildCurriculum();
-    }
-    print_r('yes');
+    //}
+    $time_end = microtime(true);
+    $time = $time_end - $time_start;
+    print_r($time);
 
     /*$f = Array(-1, -2, -3, -7, -8, -8);
     $A = Array(Array(5, -3, 2, -3, -1, 2), Array(-1, 0, 2, 1, 3, -3), Array(1, 2, -1, 0, 5, -1));

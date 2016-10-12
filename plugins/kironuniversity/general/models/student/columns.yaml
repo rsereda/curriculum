@@ -1,0 +1,78 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+    id:
+      label: Id
+
+    first_name:
+        label: name
+        searchable: true
+    last_name:
+        label: lastname
+        searchable: true
+
+    email:
+      label: Email
+      searchable: true
+      relation: auth
+      select: email
+      sortable: false
+
+    google_email:
+      label: Google Email
+      searchable: true
+      relation: auth
+      select: "\"googleEmail\""
+      sortable: false
+
+    nationality:
+      label: Nationality
+      searchable: true
+      relation: country
+      select: denomination
+
+    gender:
+        label: Gender
+
+    phone:
+        label: phone
+        type: number
+
+    #day_of_birth:
+    #    label: Day of Birth
+    #    type: date
+
+    study_program_id:
+        label: Study program
+        relation: study_program
+        select: denomination
+        sortable: false
+
+    address:
+        label: Address
+        invisible: true
+        searchable: true
+
+    current_address:
+        label: Current Address
+        invisible: true
+        searchable: true
+
+    current_city:
+        label: Current City
+        searchable: true
+
+    current_country:
+        label: Current Country
+        searchable: true
+
+    confirmed:
+        label: confirmed
+        type: switch
+
+
+    created_at:
+        label: Created

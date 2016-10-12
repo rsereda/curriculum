@@ -1,0 +1,11 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    denomination:
+      label: Denomination
+      searchable: true
+
+    active:
+      label: Active (Still in use)

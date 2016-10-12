@@ -1,0 +1,11 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    denomination:
+        label: Name
+        searchable: true
+    cat:
+        label: Category
+        searchable: true
