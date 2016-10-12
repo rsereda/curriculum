@@ -3,6 +3,7 @@
 use Model;
 use BackendAuth;
 use Kironuniversity\Curriculum\Models\Course;
+use DB;
 /**
 * Module Model
 */
@@ -55,7 +56,7 @@ class Module extends Model
   public $belongsToMany = [
     'teaching_methods' => ['Kironuniversity\Curriculum\Models\TeachingMethod', 'table' => 'module__teaching_method'],
     'study_trees' => ['Kironuniversity\Curriculum\Models\StudyTree', 'table' => 'module__study_tree'],
-    'courses' => ['Kironuniversity\Curriculum\Models\Course', 'table' => 'course__module'],
+    'courses' => ['Kironuniversity\Curriculum\Models\Course', 'table' => 'course__module', 'pivot' => ['id']],
   ];
 
   public $hasManyThrough = [
@@ -83,6 +84,18 @@ class Module extends Model
            where('learning_outcome.module_id', '=', $this->id)->
            groupBy('course.id')->get();
 
+  }
+
+  public function scopeStudyProgram($query, $studyProgramID){
+    $result = DB::select(DB::raw("SELECT DISTINCT m.id FROM module m
+    JOIN study_tree st ON st.id = {$studyProgramID}
+  	JOIN study_tree st2 ON st2.nest_left > st.nest_left AND st2.nest_right < st.nest_right
+  	JOIN module__study_tree mst ON m.id = mst.module_id and mst.study_tree_id = st2.id"), [], false);
+    $ids = [];
+    foreach($result as $id){
+      $ids[] = $id->id;
+    }
+    return $query->whereIn('id', $ids);
   }
 
 }

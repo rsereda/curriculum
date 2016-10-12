@@ -11,6 +11,8 @@ use App;
 use Config;
 use Kironuniversity\Curriculum\Models\Competency;
 use Kironuniversity\Curriculum\Models\CompetencyModule;
+use Kironuniversity\Curriculum\Classes\LPSolve;
+use Kironuniversity\Curriculum\Classes\Curriculum;
 /**
 * Modules Back-end Controller
 */
@@ -81,6 +83,32 @@ class Modules extends Controller
   {
     Config::set('current_module', $id);
     return $this->asExtension('RelationController')->onRelationClickViewList();
+  }
+
+
+  public function genmodules(){
+
+
+    echo "<pre>";
+    for($i=1;$i<=100;$i++){
+      $curriculum = new Curriculum();
+      $curriculum->buildCurriculum();
+    }
+    print_r('yes');
+
+    /*$f = Array(-1, -2, -3, -7, -8, -8);
+    $A = Array(Array(5, -3, 2, -3, -1, 2), Array(-1, 0, 2, 1, 3, -3), Array(1, 2, -1, 0, 5, -1));
+    $b = Array(-5, -1, 3);
+    $e = Array(1, 1, 1);
+    $xint = Array(1, 2, 3, 4, 5, 6);
+    $vub = Array(1, 1, 1, 1, 1, 1);
+    $ret = LPSolve::solve($f,$A,$b,$e,null,$vub,$xint);
+    print_r($ret);*/
+
+    echo "</pre>";
+
+
+    die();
   }
 
   /*public function onRelationManageAdd($id){
