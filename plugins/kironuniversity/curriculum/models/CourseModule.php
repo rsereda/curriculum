@@ -9,11 +9,14 @@ class CourseModule extends Model
 {
 
   use \October\Rain\Database\Traits\Sortable;
+
   use \October\Rain\Database\Traits\SoftDelete;
+  protected $dates = ['deleted_at'];
+
   /**
   * @var string The database table used by the model.
   */
-  public $table = 'course__module_agg';  
+  public $table = 'course__module_agg';
 
   /**
   * @var array Guarded fields
@@ -25,7 +28,7 @@ class CourseModule extends Model
   */
   protected $fillable = [];
 
-  protected $dates = ['deleted_at'];
+
 
   /**
   * @var array Relations
