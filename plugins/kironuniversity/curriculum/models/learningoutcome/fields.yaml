@@ -23,10 +23,6 @@ fields:
       type: relation
       nameFrom: denomination
 
-    ready:
-      label: Ready
-      type: switch
-
     clusters:
       label: Clusters
       type: partial
