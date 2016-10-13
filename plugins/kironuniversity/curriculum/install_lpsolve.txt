@@ -1,0 +1,28 @@
+First Instal lp-solve and create the symlink:
+https://gist.github.com/makao/11df9dec60663dcf3e0c
+
+For the compilation you need to go to source forge and download the source of lp
+there you create an folder extra/PHP/
+inside of the folder you have to copy the content from this folder:
+https://github.com/myfarms/php_lp_solve
+
+
+Go to the extension dir of the php install
+ usr/lib/php(version)/(apiversion)/
+
+and do
+
+sudo ln -s /home/vagrant/Code/lp_solve_5.5/extra/PHP/modules/phplpsolve55.so phplpsolve55.so
+
+Then create an ini file in mods-available named phplpsolve55.so with:
+extension=phplpsolve55.so
+
+then: sudo php5enmod / phpenmod phplpsolve55
+
+And finally:
+sudo ln -s /etc/php5/mods-available/lp_solve.ini /etc/php5/cli/conf.d/30-lp_solve.ini
+sudo ln -s /etc/php5/mods-available/lp_solve.ini /etc/php5/fpm/conf.d/30-lp_solve.ini
+
+
+And restart fpm
+sudo service php(version)fpm restart

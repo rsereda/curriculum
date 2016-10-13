@@ -17,7 +17,7 @@ use Kironuniversity\General\Models\Student;
 
 
 /*
-  Helper class for generating the managing and generating the individualized curriculum for students
+Helper class for generating the managing and generating the individualized curriculum for students
 */
 class Curriculum
 {
@@ -26,18 +26,19 @@ class Curriculum
   protected $student;
 
   public function __construct($studentID = null, $studyProgramID = null){
-    if($studentID == null){
-      $this->student = new Student();
-      if($studyProgramID == null){
-        $this->student->study_program_id = StudyProgram::first()->id;
-      }else{
-        $this->student->study_program_id = $studyProgramID;
-      }
-    }else{
-      $this->student = Student::findOrFail($studentID);
-    }
+    $this->setStudent($studentID = null, $studyProgramID = null);
     $this->loadModules();
   }
+
+  public function fire($job, $data)
+  {
+    Log::info('Build Curriculum for'. $data['studentID']);
+    $this->setStudent($data['studentID']);
+    $this->loadModules();
+    $this->buildCurriculum();
+    $job->delete();
+  }
+
 
   protected function loadModules(){
     $this->modules = Module::has('courses')->studyProgram($this->student->study_program_id)->with(['learning_outcomes.course_groups',
@@ -45,6 +46,7 @@ class Curriculum
       $query->has('learning_outcomes');
     },'course_groups.courses','courses'])->get();
   }
+
 
 
 
@@ -151,11 +153,13 @@ class Curriculum
     $ret = LPSolve::solve($f,$A,$b,$e,null,$upper_bounds,$xint);
     $time_end = microtime(true);
     $time = $time_end - $time_start;
-    if($ret[3] != 0){
+    if(!is_array($ret) or $ret[3] != 0){
       Log::error('Could not generate optimal solution for student '.$this->student->id);
+      Log::error($this->modules);
       Log::error($ret);
     }else{
       //dd($varToCM);
+      Log::info('Built Curriculum');
       $cmvars = count($varToCM);
       $cms = [];
       foreach($ret[1] as $var => $val){
@@ -167,13 +171,26 @@ class Curriculum
         }
       }
       $this->writeCurriculum($cms);
-      dd($ret,$cmvars,$cms);
+      //dd($ret,$cmvars,$cms);
     }
-    //dd($time,$coursesCMVars,$cmIDToVar,$A,$e,$b,$f,$ret);
+    //dd($time,$this->modules,$coursesCMVars,$cmIDToVar,$A,$e,$b,$f,$ret);
   }
 
   public function getModules(){
     return $this->modules;
+  }
+
+  public function setStudent(){
+    if($studentID == null){
+      $this->student = new Student();
+      if($studyProgramID == null){
+        $this->student->study_program_id = StudyProgram::first()->id;
+      }else{
+        $this->student->study_program_id = $studyProgramID;
+      }
+    }else{
+      $this->student = Student::findOrFail($studentID);
+    }
   }
 
   public function writeCurriculum($cms){
