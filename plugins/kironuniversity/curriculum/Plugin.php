@@ -164,7 +164,15 @@ class Plugin extends PluginBase
         'icon'        => 'icon-match',
         'permissions' => ['kironuniversity.curriculum.*'],
         'order'       => 800,
-      ]
+      ],
+
+      'pushlive' => [
+        'label' => 'Push Live',
+        'url'         => Backend::url('kironuniversity/curriculum/pushlive'),
+        'icon'        => 'icon-upload',
+        'permissions' => ['kironuniversity.curriculum.*'],
+        'order'       => 900,
+      ],
     ];
   }
 

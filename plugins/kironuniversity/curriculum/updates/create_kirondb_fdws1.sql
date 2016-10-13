@@ -1,5 +1,6 @@
 --Remember to change the options for production!!!
 CREATE EXTENSION postgres_fdw;
+
 CREATE SERVER campus_server
 FOREIGN DATA WRAPPER postgres_fdw
 OPTIONS (host 'localhost', port '5432', dbname 'kirondb');
@@ -7,6 +8,7 @@ OPTIONS (host 'localhost', port '5432', dbname 'kirondb');
 CREATE USER MAPPING FOR homestead
 SERVER campus_server
 OPTIONS (user 'homestead', password 'secret');
+
 
 
 CREATE FOREIGN TABLE public.student__course (
