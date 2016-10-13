@@ -4,9 +4,13 @@
 
 fields:
 
-    ready:
-      label: Ready (All information is filled in)
-      type: switch
+    status:
+      label: Status
+      type: radio
+      options:
+        new: New
+        ready: Ready
+        old: Old
       span: left
 
     denomination:

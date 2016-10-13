@@ -7,6 +7,10 @@ columns:
         label: Name
         searchable: true
 
+    status:
+      type: partial
+      path: $/kironuniversity/curriculum/views/_status_col.htm
+
     learning_outcomes:
         relation: learning_outcomes
         searchable: true

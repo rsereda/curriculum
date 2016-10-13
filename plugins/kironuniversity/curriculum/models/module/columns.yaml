@@ -11,6 +11,11 @@ columns:
     label: Name
     searchable: true
 
+
+  status:
+    type: partial
+    path: $/kironuniversity/curriculum/views/_status_col.htm
+
   cp:
     label: CP
 

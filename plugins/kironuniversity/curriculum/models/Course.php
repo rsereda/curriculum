@@ -79,8 +79,8 @@ class Course extends Model
   * @var array Monitor these attributes for changes.
   */
   protected $revisionable = ['denomination', 'workload', 'start_date', 'platform_id', 'end_date',
-    'university', 'certificate', 'link', 'syllabus', 
-    'short_description', 'long_description', 'ready', 'notes', 'lecturer_contacted'];
+    'university', 'certificate', 'link', 'syllabus',
+    'short_description', 'long_description', 'status', 'notes', 'lecturer_contacted'];
 
   /**
   * @var array Relations

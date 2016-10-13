@@ -12,6 +12,10 @@ columns:
         label: Name
         searchable: true
 
+    status:
+        type: partial
+        path: $/kironuniversity/curriculum/views/_status_col.htm
+
     modules:
         label: Modules
         relation: modules

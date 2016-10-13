@@ -7,6 +7,16 @@ fields:
     denomination:
       label: Name
       searchable: true
+      required: true
+
+    status:
+      label: Status
+      type: radio
+      options:
+        new: New
+        ready: Ready
+        old: Old
+      span: full
 
     learning_outcomes:
       label: Learning Outcomes

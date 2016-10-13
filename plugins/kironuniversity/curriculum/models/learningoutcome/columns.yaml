@@ -18,6 +18,10 @@ columns:
         label: Denomination
         searchable: true
 
+    status:
+      type: partial
+      path: $/kironuniversity/curriculum/views/_status_col.htm
+
     module:
         relation: module
         searchable: true

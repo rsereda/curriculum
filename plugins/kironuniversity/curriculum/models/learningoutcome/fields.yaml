@@ -3,9 +3,20 @@
 # ===================================
 
 fields:
+
     denomination:
         label: Denomination
         type: textarea
+        size: small
+
+    status:
+      label: Status
+      type: radio
+      options:
+        new: New
+        ready: Ready
+        old: Old
+      span: left
 
     module:
       label: Module

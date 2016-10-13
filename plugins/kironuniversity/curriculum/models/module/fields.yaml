@@ -15,6 +15,15 @@ tabs:
         type: number
         span: right
 
+    status:
+      label: Status
+      type: radio
+      options:
+        new: New
+        ready: Ready
+        old: Old
+      span: full
+
     content:
         label: Content
         type: textarea

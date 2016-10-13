@@ -78,7 +78,7 @@ class Module extends Model
   * @var array Monitor these attributes for changes.
   */
   protected $revisionable = ['denomination', 'cp', 'duration','responsible_user_id',
-    'da_link', 'rank', 'ready'];
+    'da_link', 'rank', 'status'];
 
   /**
   * @var array Relations
