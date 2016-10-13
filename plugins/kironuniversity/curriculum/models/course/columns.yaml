@@ -26,19 +26,19 @@ columns:
         label: Modules
         relation: modules
         searchable: true
-        valueFrom: denomination
+        select: denomination
 
     platform_id:
       label: Platform
       relation: platform
       searchable: true
-      valueFrom: denomination
+      select: denomination
 
     course_level_id:
       label: Course Level
       relation: course_level
       searchable: true
-      valueFrom: denomination
+      select: denomination
 
     university:
         label: Offered by
