@@ -71,10 +71,10 @@ class Plugin extends PluginBase
             'url'         => Backend::url('kironuniversity/curriculum/courses'),
             'permissions' => ['kironuniversity.curriculum.*']
           ],
-          'competencies' => [
+          'learning_outcomes' => [
             'label'       => 'Learning outcomes',
             'icon'        => 'icon-puzzle',
-            'url'         => Backend::url('kironuniversity/curriculum/competencies'),
+            'url'         => Backend::url('kironuniversity/curriculum/learningoutcomes'),
             'permissions' => ['kironuniversity.curriculum.*']
           ],
           'modules' => [
@@ -106,6 +106,11 @@ class Plugin extends PluginBase
             'icon' => 'icon-university',
             'url' => Backend::url('kironuniversity/curriculum/partneruniversities'),
           ],
+          'studyprograms' => [
+            'label' => 'Recommend Courses',
+            'icon' => 'icon-star',
+            'url' => Backend::url('kironuniversity/curriculum/studyprograms'),
+          ]
         ]
       ],
       'predefined' => [
@@ -152,6 +157,28 @@ class Plugin extends PluginBase
           ]
         ],
       ],
+
+      'matchings' => [
+        'label'       => 'Matchings',
+        'url'         => Backend::url('kironuniversity/curriculum/matchings'),
+        'icon'        => 'icon-match',
+        'permissions' => ['kironuniversity.curriculum.*'],
+        'order'       => 800,
+      ]
+    ];
+  }
+
+  public function registerFormWidgets()
+  {
+    return [
+      'Kironuniversity\Curriculum\FormWidgets\RelationManager' => [
+        'label' => 'Relation Manager',
+        'code'  => 'relationmanager'
+      ],
+      'Kironuniversity\Curriculum\FormWidgets\SortingWidget' => [
+        'label' => 'Sorting Widget',
+        'code'  => 'sorting'
+      ]
     ];
   }
 

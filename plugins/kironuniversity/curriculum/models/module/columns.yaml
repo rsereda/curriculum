@@ -11,8 +11,13 @@ columns:
     label: Name
     searchable: true
 
+
+  status:
+    type: partial
+    path: $/kironuniversity/curriculum/views/_status_col.htm
+
   cp:
-    label: ECTS
+    label: CP
 
   duration:
     label: Duration
@@ -23,9 +28,10 @@ columns:
     select: denomination
 
   responsible_user:
-    label: Reposible Person
+    label: Responsible Person
     relation: responsible_user
-    valueFrom: full_name    
+    select: "concat(first_name, ' ', last_name)"
+    searchable: true
 
   updatedBy:
     label: Updated By

@@ -7,8 +7,6 @@
 
 <?php if (!$this->fatalError): ?>
 
-
-
     <?= Form::open(['class' => 'layout']) ?>
 
         <div class="layout-row">
@@ -18,8 +16,17 @@
         <h3>Prerequisites</h3>
         <?= $this->relationRender('required') ?>
 
+        <h3>Prerequisite for</h3>
+        <?= $this->relationRender('required_by') ?>
+
         <h3>Clusters</h3>
         <?= $this->relationRender('clusters') ?>
+
+        <h3>Modules</h3>
+        <?= $this->relationRender('modules') ?>
+
+        <h3>Courses</h3>
+        <?= $this->relationRender('courses') ?>
 
         <div class="form-buttons">
             <div class="loading-indicator-container">

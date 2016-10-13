@@ -9,6 +9,17 @@ required:
         recordsPerPage: 10
         showSearch: true
 
+required_by:
+  label: Prerequisite for
+  view:
+        list: $/kironuniversity/curriculum/models/competency/columns.yaml
+        toolbarButtons: link|unlink
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/competency/fields_relation.yaml
+        recordsPerPage: 10
+        showSearch: true
+
 clusters:
   label: Cluster
   view:
@@ -17,5 +28,30 @@ clusters:
         showSearch: true
   manage:
         form: $/kironuniversity/curriculum/models/cluster/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
+
+modules:
+  label: Module
+  readOnly: true
+  view:
+        list: $/kironuniversity/curriculum/models/module/columns.yaml
+        toolbarButtons: link
+        showSearch: true
+        recordOnClick: "var win = window.open('/backend/kironuniversity/curriculum/modules/update/' +this.innerHTML, '_blank');win.focus();"
+  manage:
+        form: $/kironuniversity/curriculum/models/module/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
+
+courses:
+  label: Course
+  view:
+        list: $/kironuniversity/curriculum/models/course/columns.yaml
+        toolbarButtons: link
+        showSearch: true
+        recordOnClick: "var win = window.open('/backend/kironuniversity/curriculum/courses/update/' +this.innerHTML, '_blank');win.focus();"
+  manage:
+        form: $/kironuniversity/curriculum/models/course/fields.yaml
         recordsPerPage: 10
         showSearch: true

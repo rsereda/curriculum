@@ -1,0 +1,22 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    denomination:
+        label: Name
+        searchable: true
+
+    status:
+      type: partial
+      path: $/kironuniversity/curriculum/views/_status_col.htm
+
+    learning_outcomes:
+        relation: learning_outcomes
+        searchable: true
+        select: denomination
+
+    courses:
+        relation: courses
+        searchable: true
+        select: course_denomination

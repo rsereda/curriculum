@@ -1,0 +1,85 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    status:
+      label: Status
+      type: radio
+      options:
+        new: New
+        ready: Ready
+        old: Old
+      span: left
+
+    denomination:
+        label: Coursename
+        span: left
+        required: true
+
+    platform:
+        label: Platform:
+        type: relation
+        nameFrom: denomination
+        span: right
+        required: true
+
+    course_level:
+        label: Level
+        type: relation
+        nameFrom: denomination
+        span: left
+        required: true
+        comment: CATUION! This values is set to Introductory as default the scraper don't get this information
+
+    weeks:
+        label: Weeks/Units
+        type: number
+        span: right
+
+    workload:
+        label: Total Worklad (Hours)
+        type: number
+        span: left
+
+    certificate:
+      label: Certificate
+      type: radio
+      options:
+        paid: Paid
+        free: Free
+        none: None
+      span: right
+
+    university:
+        label: Offered By
+        span: right
+        required: true
+
+
+    start_date:
+        label: Start date
+        type: datepicker
+        mode: date
+        span: left
+        comment: "CAUTION: Could be overwritten during an update of the scraper - Leave empty for self paced courses"
+
+    end_date:
+        label: End date
+        type: datepicker
+        mode: date
+        span: left
+        comment: "CAUTION: Could be overwritten during an update of the scraper - Leave empty for self paced courses"
+
+    link:
+        label: Link
+        required: true
+        span: right
+        comment: "CAUTION: Could be overwritten during an update of the scraper"
+
+    #code:
+    #  label: Code
+    #  span: left
+    #  type: number
+    #  required: true

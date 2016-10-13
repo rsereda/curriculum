@@ -25,19 +25,18 @@
   },
   "require": {
     "php": ">=5.5.9",
-    "october/rain": "dev-develop",
-    "october/system": "dev-develop",
-    "october/backend": "dev-develop",
-    "october/cms": "dev-develop",
+    "october/rain": "~1.0",
+    "october/system": "~1.0",
+    "october/backend": "~1.0",
+    "october/cms": "~1.0",
     "laravel/framework": "5.1.*",
-    "illuminate/html": "5.0.*",
-    "soundasleep/html2text": "~0.2",
-    "mandrill/mandrill": "dev-master",
-    "sendgrid/sendgrid": "^4.0"
+    "wikimedia/composer-merge-plugin": "dev-master",
+    "maatwebsite/excel": "^2.1"
   },
   "require-dev": {
+    "fzaninotto/faker": "~1.4",
     "phpunit/phpunit": "~4.0",
-    "phpunit/phpunit-selenium": ">=1.2"
+    "phpunit/phpunit-selenium": "~1.2"
   },
   "autoload-dev": {
     "classmap": [
@@ -55,5 +54,15 @@
     "preferred-install": "dist"
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "extra": {
+    "merge-plugin": {
+      "include": [
+        "plugins/*/*/composer.json"
+      ],
+      "recurse": true,
+      "replace": false,
+      "merge-dev": false
+    }
+  }
 }

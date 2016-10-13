@@ -1,0 +1,7 @@
+<?php
+  $status2class = ['new' => 'text-info', 'ready'  => 'text-success', 'old' => 'text-muted'];
+?>
+
+<span class="oc-icon-circle <?= $status2class[$value] ?>">
+<?= ucfirst($value) ?>
+</span>

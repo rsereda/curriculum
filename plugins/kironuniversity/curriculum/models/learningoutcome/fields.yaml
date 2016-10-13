@@ -1,0 +1,45 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    denomination:
+        label: Denomination
+        type: textarea
+        size: small
+
+    status:
+      label: Status
+      type: radio
+      options:
+        new: New
+        ready: Ready
+        old: Old
+      span: left
+
+    module:
+      label: Module
+      type: relation
+      nameFrom: denomination
+
+    clusters:
+      label: Clusters
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: clusters
+
+    required:
+      label: Prerequisite
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: required
+
+    required_by:
+      label: Prerequisite for
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: required_by

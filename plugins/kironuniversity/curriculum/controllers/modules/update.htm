@@ -7,15 +7,15 @@
 
 <?php if (!$this->fatalError): ?>
 
-  <script>
-    function reloadCMCList(){
-      $('html').request('onReloadCMCList', {
-        success: function(response){
-          $('#cmcList').html(response.result);
-        }
-      })
-    }
-  </script>
+
+
+  <?php
+    $this->reorder();
+  ?>
+  <h3>Reorder Courses (Refresh after you added new ones - if you changed the module remeber to save before)</h3>
+  <?=$this->reorderRender(); ?>
+
+  <div style="margin:20px;">&nbsp;</div>
 
   <?= Form::open(['class' => 'layout']) ?>
 
@@ -23,19 +23,7 @@
     <?= $this->formRender() ?>
   </div>
 
-  <h3>Learning outcomes </h3>
-  <?= $this->relationRender('competencies') ?>
 
-  <h3>Course List</h3>
-  <div id="cmcList">
-    <?= $this->renderCMCList() ?>
-  </div>
-
-  <h3>Places in study tree</h3>
-  <?= $this->relationRender('study_trees') ?>
-
-  <h3>Teaching Methods</h3>
-  <?= $this->relationRender('teaching_methods') ?>
 
   <div class="form-buttons">
     <div class="loading-indicator-container">
@@ -72,17 +60,12 @@
 
 <?= Form::close() ?>
 
+
+
+
 <?php else: ?>
 
   <p class="flash-message static error"><?= e($this->fatalError) ?></p>
   <p><a href="<?= Backend::url('kironuniversity/curriculum/modules') ?>" class="btn btn-default">Return to modules list</a></p>
 
 <?php endif ?>
-<script>
-
-  $('html').on('ajaxBeforeUpdate', function(event,context) {
-    if(context.handler == 'onRelationManageAdd' || context.handler == 'onRelationButtonUnlink'){
-      reloadCMCList();
-    }
-  });
-</script>

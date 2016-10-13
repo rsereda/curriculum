@@ -8,14 +8,43 @@ columns:
       label: id
       searchable: true
 
+    link:
+      label: Link
+      type: partial
+      path: $/kironuniversity/curriculum/models/course/_update_link.htm
+      clickable: false
+
     denomination:
         label: Name
         searchable: true
 
+    status:
+        type: partial
+        path: $/kironuniversity/curriculum/views/_status_col.htm
+
+    modules:
+        label: Modules
+        relation: modules
+        searchable: true
+        select: denomination
+
+    platform_id:
+      label: Platform
+      relation: platform
+      searchable: true
+      select: denomination
+
+    course_level_id:
+      label: Course Level
+      relation: course_level
+      searchable: true
+      select: denomination
+
     university:
         label: Offered by
 
-
     short_description:
         label: Short Description
+        type: partial
+        path: $/kironuniversity/curriculum/models/course/_short_desc.htm
         searchable: true

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Matching
+
+# Model Form Field configuration
+form: $/kironuniversity/curriculum/models/matching/fields.yaml
+
+# Model Class name
+modelClass: Kironuniversity\Curriculum\Models\Matching
+
+# Default redirect location
+defaultRedirect: kironuniversity/curriculum/matchings
+
+# Create page
+create:
+    title: Create Matching
+    redirect: kironuniversity/curriculum/matchings/update/:id
+    redirectClose: kironuniversity/curriculum/matchings
+
+# Update page
+update:
+    title: Edit Matching
+    redirect: kironuniversity/curriculum/matchings
+    redirectClose: kironuniversity/curriculum/matchings
+
+# Preview page
+preview:
+    title: Preview Matching

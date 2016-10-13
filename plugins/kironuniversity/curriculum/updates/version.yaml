@@ -28,3 +28,44 @@
   - create_competency__cluster.php
   - create_course__language.php
   - create_course__subtitle.php
+1.0.4:
+  - Remove CP from Course
+  - remove_cp_from_course.php
+1.0.5:
+  - Add Da Link and Recommdations for Modules and Courses
+  - AddDAandOrderToModule.php
+  - create_course__study_program.php
+  - create_study_program_v.php
+1.0.6:
+  - Create tables for learning outcomes to replace comptencies
+  - create_learning_outcome.php
+  - create_learning_outcome__cluster.php
+  - create_learning_outcome__learning_outcome_table.php
+  - create_course__module.php
+1.0.7:
+  - Add course groups
+  - create_course_groups_table.php
+  - create_course_group__learning_outcome.php
+  - create_course_group__course__module.php
+1.0.8:
+  - Reference Module in Course Group
+  - alter_course_group.php
+1.0.9:
+  - Create Course Module Agg
+  - create_course_module_agg.php
+1.1.0:
+  - Create CourseModuleStudent Model
+  - create_course_module_students_table.php
+1.1.1:
+  - Add soft Deletes and ready everywhere
+1.1.2:
+  - Add Course Prerequisites and treenode take first for guidance
+  - add_take_for_guidance_study_trees_table.php
+  - create_course_courses_table.php
+1.1.3:
+  - Replace ready with status and add hidden to study_tree
+  - replace_ready_with_status_module.php
+  - replace_ready_with_status_learning_outcome.php
+  - replace_ready_with_status_course_group.php
+  - replace_ready_with_status_course.php
+  - add_hidden_to_study_trees_table.php

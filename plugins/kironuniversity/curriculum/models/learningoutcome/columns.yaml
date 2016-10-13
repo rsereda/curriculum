@@ -1,0 +1,37 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+        type: number
+
+    link:
+      label: Link
+      type: partial
+      path: $/kironuniversity/curriculum/models/learningoutcome/_update_link.htm
+      clickable: false
+
+    denomination:
+        label: Denomination
+        searchable: true
+
+    status:
+      type: partial
+      path: $/kironuniversity/curriculum/views/_status_col.htm
+
+    module:
+        relation: module
+        searchable: true
+        valueFrom: denomination
+
+    clusters:
+        relation: clusters
+        valueFrom: denomination
+        searchable: true
+
+    required:
+      relation: required
+      valueFrom: denomination

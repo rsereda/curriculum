@@ -1,0 +1,66 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+    id:
+      label: Id
+
+    first_name:
+        label: name
+        searchable: true
+    last_name:
+        label: lastname
+        searchable: true
+
+    email:
+        label: email
+        type: colorpicker
+
+    gender:
+        label: Gender
+
+    #day_of_birth:
+    #    label: Day of Birth
+    #    type: date
+
+    study_program_id:
+        label: Study program
+        relation: study_program
+        select: denomination
+        sortable: false
+
+    address:
+        label: Address
+        invisible: true
+        searchable: true
+
+    confirmed:
+        label: confirmed
+        type: switch
+
+    country_id:
+        label: Nationality
+        relation: country
+        select: denomination
+        sortable: false
+
+    graduation_id:
+        label: Graduation
+        relation: graduation
+        select: denomination
+        sortable: false
+
+    application_status_id:
+        label: Application Status
+        relation: application_status
+        select: denomination
+        searchable: true
+        sortable: false
+
+    partner:
+      invisible: true
+
+    created_at:
+        label: Created

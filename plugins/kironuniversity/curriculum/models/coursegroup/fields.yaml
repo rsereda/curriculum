@@ -1,0 +1,35 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    denomination:
+      label: Name
+      searchable: true
+      required: true
+
+    status:
+      label: Status
+      type: radio
+      options:
+        new: New
+        ready: Ready
+        old: Old
+      span: full
+
+    learning_outcomes:
+      label: Learning Outcomes
+      type: taglist
+      customTags: false
+      options: true
+      mode: relation
+      nameFrom: denomination
+
+    courses:
+      label: Courses
+      type: relation
+      customTags: false
+      options: true
+      mode: relation
+      nameFrom: course_denomination

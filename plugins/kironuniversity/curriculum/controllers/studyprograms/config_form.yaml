@@ -3,7 +3,7 @@
 # ===================================
 
 # Record name
-name: Study Program
+name: Study Program Recommdations
 
 # Model Form Field configuration
 form: $/kironuniversity/curriculum/models/studyprogram/fields.yaml
@@ -22,7 +22,7 @@ create:
 
 # Update page
 update:
-    title: Edit Study Program
+    title: Edit Study Program Recommdations
     redirect: kironuniversity/curriculum/studyprograms
     redirectClose: kironuniversity/curriculum/studyprograms
 

@@ -3,6 +3,7 @@
 use Model;
 use BackendAuth;
 use Kironuniversity\Curriculum\Models\Course;
+use DB;
 /**
 * Module Model
 */
@@ -15,6 +16,9 @@ class Module extends Model
   public $table = 'module';
 
   use \October\Rain\Database\Traits\Validation;
+
+  use \October\Rain\Database\Traits\SoftDelete;
+  protected $dates = ['deleted_at'];
 
   public $rules = [
         'denomination' => 'required',
@@ -43,7 +47,10 @@ class Module extends Model
   * @var array Relations
   */
   public $hasOne = [];
-  public $hasMany = [];
+  public $hasMany = [
+    'learning_outcomes' => ['Kironuniversity\Curriculum\Models\LearningOutcome'],
+    'course_groups' => ['Kironuniversity\Curriculum\Models\CourseGroup'],
+  ];
   public $belongsTo = [
     'responsible_user' => ['Backend\Models\User'],
     'partner_university' => ['Kironuniversity\Curriculum\Models\PartnerUniversity'],
@@ -52,11 +59,35 @@ class Module extends Model
   public $belongsToMany = [
     'teaching_methods' => ['Kironuniversity\Curriculum\Models\TeachingMethod', 'table' => 'module__teaching_method'],
     'study_trees' => ['Kironuniversity\Curriculum\Models\StudyTree', 'table' => 'module__study_tree'],
-    'competencies' => ['Kironuniversity\Curriculum\Models\Competency', 'table' => 'competency__module'],
+    'courses' => ['Kironuniversity\Curriculum\Models\Course', 'table' => 'course__module', 'pivot' => ['id']],
   ];
+
+  public $hasManyThrough = [
+       'course_groups' => [
+           'Kironuniversity\Curriculum\Models\CourseGroup',
+           'through' => 'Kironuniversity\Curriculum\Models\LearningOutcome'
+       ],
+   ];
   public $morphTo = [];
   public $morphOne = [];
-  public $morphMany = [];
+
+
+  use \October\Rain\Database\Traits\Revisionable;
+
+  /**
+  * @var array Monitor these attributes for changes.
+  */
+  protected $revisionable = ['denomination', 'cp', 'duration','responsible_user_id',
+    'da_link', 'rank', 'status'];
+
+  /**
+  * @var array Relations
+  */
+  public $morphMany = [
+    'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
+  ];
+
+
   public $attachOne = [];
   public $attachMany = [];
 
@@ -64,13 +95,27 @@ class Module extends Model
     $this->updated_by = BackendAuth::getUser()->id;
   }
 
-  public function courses(){
-    return Course::select('course.*')->
-            join('competency__module__course', 'course_id', '=', 'course.id')->
-            join('competency__module', 'competency__module_id', '=', 'competency__module.id')->
-            join('module', 'module_id', '=', 'module.id')->
-            where('module.id', '=', $this->id)->where('status', '=', 'accepted')->
-            groupBy('course.id')->get();
+  public function usedCourses(){
+   return Course::select('course.*')->
+           join('course__module', 'course_id', '=', 'course.id')->
+           join('course_group__course__module', 'course__module_id', '=', 'course__module.id')->
+           join('course_group__learning_outcome', 'course_group__course__module.course_group_id', '=', 'course_group__learning_outcome.course_group_id')->
+           join('learning_outcome', 'learning_outcome_id', '=', 'learning_outcome.id')->
+           where('learning_outcome.module_id', '=', $this->id)->
+           groupBy('course.id')->get();
+
+  }
+
+  public function scopeStudyProgram($query, $studyProgramID){
+    $result = DB::select(DB::raw("SELECT DISTINCT m.id FROM module m
+    JOIN study_tree st ON st.id = {$studyProgramID}
+  	JOIN study_tree st2 ON st2.nest_left > st.nest_left AND st2.nest_right < st.nest_right
+  	JOIN module__study_tree mst ON m.id = mst.module_id and mst.study_tree_id = st2.id"), [], false);
+    $ids = [];
+    foreach($result as $id){
+      $ids[] = $id->id;
+    }
+    return $query->whereIn('id', $ids);
   }
 
 }

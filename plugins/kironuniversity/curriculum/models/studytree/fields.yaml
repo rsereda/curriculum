@@ -11,3 +11,7 @@ fields:
     type: relation
     nameFrom: path
     emptyOption: No Parent
+
+  take_first:
+    label: "Guidance: For how many modules should the first course be recommended"
+    type: number

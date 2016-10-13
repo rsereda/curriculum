@@ -1,32 +1,91 @@
 # ===================================
 #  Form Field Definitions
 # ===================================
-
-fields:
+tabs:
+  defaultTab: Module
+  fields:
 
     denomination:
         label: Name
         required: true
+        span: left
+
+    rank:
+        label: Rank in student module view (lower more important)
+        type: number
+        span: right
+
+    status:
+      label: Status
+      type: radio
+      options:
+        new: New
+        ready: Ready
+        old: Old
+      span: full
 
     content:
         label: Content
         type: textarea
 
     cp:
-      label: ECTS
+      label: CP
       type: number
       required: true
+      span: left
 
     duration:
         label: Duration
         type: number
+        span: right
 
     responsible_user:
         label: Responsible Person
         type: relation
         nameFrom: full_name
+        span: left
 
     partner_university:
         label: Partner University / Kiron
         type: relation
         nameFrom: denomination
+        span: right
+
+    da_link:
+      label: Link to DA Course Google Form
+
+    learning_outcomes:
+      label: Learning Outcomes
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      relation: learning_outcomes
+      disabled: true
+
+    course_groups:
+      label: Course Groups
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      relation: course_groups
+      disabled: true
+
+    study_trees:
+      label: Places in study tree
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      relation: study_trees
+      disabled: true
+
+    teaching_methods:
+      label: Teachong Methods
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: teaching_methods
+
+    courses:
+      label: Courses
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: courses
+      tab: Courses

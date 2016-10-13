@@ -1,0 +1,30 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    denomination:
+        label: Denomination
+        type: textarea
+
+
+    status:
+      label: Status
+      type: radio
+      options:
+        new: New
+        ready: Ready
+        old: Old
+      span: left
+
+    clusters:
+      label: Clusters
+      type: taglist
+      mode: relation
+      nameFrom: denomination
+
+    required:
+      label: Prerequisites
+      type: taglist
+      mode: relation
+      nameFrom: denomination

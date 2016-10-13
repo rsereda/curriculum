@@ -4,9 +4,13 @@
 
 fields:
 
-    ready:
-      label: Ready (All information is filled in)
-      type: switch
+    status:
+      label: Status
+      type: radio
+      options:
+        new: New
+        ready: Ready
+        old: Old
       span: left
 
     denomination:
@@ -35,14 +39,9 @@ fields:
         span: right
 
     workload:
-        label: Worklad
+        label: Total Worklad (Hours)
         type: number
         span: left
-
-    cp:
-      label: CP
-      type: number
-      span: right
 
     certificate:
       label: Certificate
@@ -107,6 +106,28 @@ fields:
         type: richeditor
         span: right
         comment: "CAUTION: Could be overwritten during an update of the scraper"
+
+
+    required:
+      label: Prerequisite
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: required
+
+    required_by:
+      label: Prerequisite for
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: required_by
+
+    modules:
+      label: Modules
+      type: partial
+      path: $/kironuniversity/curriculum/views/_relation.htm
+      disabled: true
+      relation: modules
 
     #code:
     #  label: Code
