@@ -11,8 +11,6 @@ use App;
 use Config;
 use Kironuniversity\Curriculum\Models\Competency;
 use Kironuniversity\Curriculum\Models\CompetencyModule;
-use Kironuniversity\Curriculum\Classes\LPSolve;
-use Kironuniversity\Curriculum\Classes\Curriculum;
 /**
 * Modules Back-end Controller
 */

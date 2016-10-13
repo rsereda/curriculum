@@ -4,7 +4,7 @@ CREATE EXTENSION postgres_fdw;
 
 CREATE SERVER campus_server
 FOREIGN DATA WRAPPER postgres_fdw
-OPTIONS (host 'localhost', port '5432', dbname 'campus');
+OPTIONS (host 'localhost', port '5432', dbname 'kirondb');
 
 CREATE USER MAPPING FOR homestead
 SERVER campus_server
