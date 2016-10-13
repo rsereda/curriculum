@@ -39,6 +39,7 @@ class CourseGroup extends Model
         'Kironuniversity\Curriculum\Models\CourseModule',
         'otherKey' => 'course__module_id',
         'table' => 'course_group__course__module',
+        'scope' => 'module',
       ],
       'learning_outcomes' => [
         'Kironuniversity\Curriculum\Models\LearningOutcome',

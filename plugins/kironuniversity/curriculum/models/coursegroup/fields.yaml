@@ -28,7 +28,7 @@ fields:
 
     courses:
       label: Courses
-      type: taglist
+      type: relation
       customTags: false
       options: true
       mode: relation
