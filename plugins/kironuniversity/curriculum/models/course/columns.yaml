@@ -8,6 +8,12 @@ columns:
       label: id
       searchable: true
 
+    link:
+      label: Link
+      type: partial
+      path: $/kironuniversity/curriculum/models/course/_update_link.htm
+      clickable: false
+
     denomination:
         label: Name
         searchable: true

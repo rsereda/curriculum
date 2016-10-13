@@ -50,6 +50,6 @@ courses:
         toolbarButtons: link
         showSearch: true
   manage:
-        form: $/kironuniversity/curriculum/models/course/fields.yaml
+        form: $/kironuniversity/curriculum/models/course/fields_relation.yaml
         recordsPerPage: 10
         showSearch: true
