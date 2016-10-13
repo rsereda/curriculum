@@ -68,6 +68,20 @@ class Course extends Model
     */
     'languages' => ['Kironuniversity\Curriculum\Models\Language', 'table' => 'course__language'],
     'subtitles' => ['Kironuniversity\Curriculum\Models\Language', 'table' => 'course__subtitle'],
+    'required' =>
+    [
+      'Kironuniversity\Curriculum\Models\Course',
+      'table' => 'course__course',
+      'key' => 'course_for_id',
+      'otherKey' => 'course_required_id',
+    ],
+    'required_by' =>
+    [
+      'Kironuniversity\Curriculum\Models\Course',
+      'table' => 'course__course',
+      'otherKey' => 'course_for_id',
+      'key' => 'course_required_id',
+    ],
   ];
   public $morphTo = [];
   public $morphOne = [];

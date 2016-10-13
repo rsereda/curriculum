@@ -1,3 +1,25 @@
+required:
+  label: Prerequisite
+  view:
+        list: $/kironuniversity/curriculum/models/course/columns.yaml
+        toolbarButtons: link|unlink
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/course/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
+
+required_by:
+  label: Prerequisite for
+  view:
+        list: $/kironuniversity/curriculum/models/course/columns.yaml
+        toolbarButtons: link|unlink
+        showSearch: true
+  manage:
+        form: $/kironuniversity/curriculum/models/course/fields.yaml
+        recordsPerPage: 10
+        showSearch: true
+
 modules:
   label: module
   view:
