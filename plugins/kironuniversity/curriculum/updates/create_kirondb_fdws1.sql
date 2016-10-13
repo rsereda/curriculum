@@ -2,15 +2,15 @@
 
 CREATE EXTENSION postgres_fdw;
 
-CREATE SERVER apply_server
+CREATE SERVER campus_server
 FOREIGN DATA WRAPPER postgres_fdw
-OPTIONS (host 'localhost', port '5432', dbname 'apply');
+OPTIONS (host 'localhost', port '5432', dbname 'campus');
 
 CREATE USER MAPPING FOR homestead
-SERVER apply_server
+SERVER campus_server
 OPTIONS (user 'homestead', password 'secret');
 
-CREATE FOREIGN TABLE public.student_fdw (
+CREATE FOREIGN TABLE public.student (
     id integer,
     "user" integer,
     first_name text,
@@ -40,4 +40,4 @@ CREATE FOREIGN TABLE public.student_fdw (
     buddy_preferred_gender character varying(50),
     send_study_guides boolean,
     hours_per_week double precision,
-    phone text) SERVER student_server OPTIONS (schema_name 'public', table_name 'student');
+    phone text) SERVER campus_server OPTIONS (schema_name 'public', table_name 'student');
