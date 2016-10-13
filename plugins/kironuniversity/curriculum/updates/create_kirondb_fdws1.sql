@@ -1,5 +1,7 @@
 --Remember to change the options for production!!!
 
+CREATE EXTENSION postgres_fdw;
+
 CREATE SERVER apply_server
 FOREIGN DATA WRAPPER postgres_fdw
 OPTIONS (host 'localhost', port '5432', dbname 'apply');
@@ -10,7 +12,7 @@ OPTIONS (user 'homestead', password 'secret');
 
 CREATE FOREIGN TABLE public.student_fdw (
     id integer,
-    user integer,
+    "user" integer,
     first_name text,
     last_name text,
     gender text,
@@ -34,7 +36,6 @@ CREATE FOREIGN TABLE public.student_fdw (
     map_bounds_east double precision,
     map_bounds_west double precision,
     geocode_result json,
-    location geometry(Point,4326),
     current_city character varying(50),
     buddy_preferred_gender character varying(50),
     send_study_guides boolean,
