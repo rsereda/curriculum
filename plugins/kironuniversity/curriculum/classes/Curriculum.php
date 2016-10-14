@@ -165,7 +165,7 @@ class Curriculum
   $xint = range(1,count($f));
   $upper_bounds = array_fill(0,count($f),1);
   if(empty($f) or empty($A)){
-    dd($f,$A,$this->modules->toArray());
+    dd($f,$A,$this->modules->toArray(),$this->student);
   }
   $ret = LPSolve::solve($f,$A,$b,$e,null,$upper_bounds,$xint);
   $time_end = microtime(true);
