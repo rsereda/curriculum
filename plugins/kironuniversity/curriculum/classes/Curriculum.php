@@ -170,6 +170,9 @@ class Curriculum
           }
           $constraint[$cgIDToVar[$course_group->id]] = 1;
         }
+        if(!$feasible){
+          $infeasibleLOs[] = $learning_outcome->id;
+        }
         if(!empty($constraint)){
           $A[] = $constraint;
           $e[] = 1; // >=
