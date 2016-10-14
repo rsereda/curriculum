@@ -30,7 +30,7 @@ class Curriculum
     $this->loadModules();
   }
 
-  public function fire($job, $data)
+  public function buildCurriculumJob($job, $data)
   {
     Log::info('Build Curriculum for'. $data['studentID']);
     $this->setStudent($data['studentID']);
@@ -39,12 +39,21 @@ class Curriculum
     $job->delete();
   }
 
+  public function refreshKironDBJob($job, $data){
+    $this->refreshKironDB();
+    $job->delete();
+  }
+
+  public function refreshKironDB(){
+    DB::connection('plan')->unprepared('SELECT refreshallmaterializedviews();');
+  }
+
 
   protected function loadModules(){
     $this->modules = Module::has('courses')->studyProgram($this->student->study_program_id)->with(['learning_outcomes.course_groups',
     'course_groups' => function($query){
       $query->has('learning_outcomes');
-    },'course_groups.courses','courses'])->get();
+    },'course_groups.courses','courses'])->orderBy('module.id')->get();
   }
 
 
@@ -102,110 +111,135 @@ class Curriculum
       foreach($module->course_groups as $course_group){
         $f[$lastVar] = 0;
 
-        $constraint = [$lastVar => 1  ];
-        foreach($course_group->courses as $course_module){
-          $cmVarID = $cmIDToVar[$course_module->id];
-          $A[] = [$cmVarID => -1, $lastVar => 1];
-          $e[] = -1; // <=
-          $b[] = 0;
-          $constraint[$cmVarID] = -1;
-        }
-        $A[] = $constraint;
-        $e[] = 1; // >=
-        $b[] = 1 - count($course_group->courses);
-        $cgIDToVar[$course_group->id] = $lastVar;
-        $lastVar++;
-      }
-    }
+        $constraint = [$lastVar => 1];
+        /*if(empty($course_group->courses) or (count($course_group->courses) < 0)){
+        dd('Empty Course Group');
+      }*/
 
-    //Building learning outcome constraints
-    foreach($this->modules as $module){
-      foreach($module->learning_outcomes as $learning_outcome){
-        $constraint = [];
-        foreach($learning_outcome->course_groups as $course_group){
-          $constraint[$cgIDToVar[$course_group->id]] = 1;
-        }
-        if(!empty($constraint)){
-          $A[] = $constraint;
-          $e[] = 1; // >=
-          $b[] = 1;
-        }
-      }
-    }
-
-
-
-    //Use Course only onces
-    foreach($coursesCMVars as $cmVars){
-      $constraint = [];
-      foreach($cmVars as $courseID => $var){
-        $constraint[$var] = 1;
+      foreach($course_group->courses as $course_module){
+        $cmVarID = $cmIDToVar[$course_module->id];
+        $A[] = [$cmVarID => -1, $lastVar => 1];
+        $e[] = -1; // <=
+        $b[] = 0;
+        $constraint[$cmVarID] = -1;
       }
       $A[] = $constraint;
-      $e[] = -1; // >=
-      $b[] = 1;
+      $e[] = 1; // >=
+      $b[] = 1 - count($course_group->courses);
+      $cgIDToVar[$course_group->id] = $lastVar;
+      $lastVar++;
     }
+  }
 
-    // Make all Variables integer variables
-    $xint = range(1,count($f));
-    $upper_bounds = array_fill(0,count($f),1);
-
-    $ret = LPSolve::solve($f,$A,$b,$e,null,$upper_bounds,$xint);
-    $time_end = microtime(true);
-    $time = $time_end - $time_start;
-    if(!is_array($ret) or $ret[3] != 0){
-      Log::error('Could not generate optimal solution for student '.$this->student->id);
-      Log::error($this->modules);
-      Log::error($ret);
-    }else{
-      //dd($varToCM);
-      Log::info('Built Curriculum');
-      $cmvars = count($varToCM);
-      $cms = [];
-      foreach($ret[1] as $var => $val){
-        if($var >= $cmvars){
-          break;
+  //Building learning outcome constraints
+  foreach($this->modules as $module){
+    foreach($module->learning_outcomes as $learning_outcome){
+      $constraint = [];
+      foreach($learning_outcome->course_groups as $course_group){
+        if(!array_key_exists($course_group->id, $cgIDToVar)){
+          dd('Course Group not found',  $course_group->id, $cgIDToVar, $learning_outcome->toArray(), $this->modules->toArray());
         }
-        if($val == 1){
-          $cms[] = $varToCM[$var];
-        }
+        $constraint[$cgIDToVar[$course_group->id]] = 1;
       }
-      $this->writeCurriculum($cms);
-      //dd($ret,$cmvars,$cms);
+      if(!empty($constraint)){
+        $A[] = $constraint;
+        $e[] = 1; // >=
+        $b[] = 1;
+      }
     }
-    //dd($time,$this->modules,$coursesCMVars,$cmIDToVar,$A,$e,$b,$f,$ret);
   }
 
-  public function getModules(){
-    return $this->modules;
+  //Use Course only onces
+  foreach($coursesCMVars as $cmVars){
+    $constraint = [];
+    foreach($cmVars as $courseID => $var){
+      $constraint[$var] = 1;
+    }
+
+    /*$A[] = $constraint;
+    $e[] = -1; // <=
+    $b[] = 1;*/
   }
 
-  public function setStudent($studentID = null, $studyProgramID = null){
-    if($studentID == null){
-      $this->student = new Student();
-      if($studyProgramID == null){
-        $this->student->study_program_id = StudyProgram::first()->id;
-      }else{
-        $this->student->study_program_id = $studyProgramID;
+  // Make all Variables integer variables
+  $xint = range(1,count($f));
+  $upper_bounds = array_fill(0,count($f),1);
+  if(empty($f) or empty($A)){
+    dd($f,$A,$this->modules->toArray());
+  }
+  $ret = LPSolve::solve($f,$A,$b,$e,null,$upper_bounds,$xint);
+  $time_end = microtime(true);
+  $time = $time_end - $time_start;
+  if(!is_array($ret) or $ret[3] != 0){
+
+    dd('No optimal soltion found', $f,$A,$ret,$this->modules->toArray());
+    Log::error('Could not generate optimal solution for student '.$this->student->id);
+    Log::error($this->modules);
+    Log::error($ret);
+  }else{
+    //dd($varToCM);
+    Log::info('Built Curriculum');
+    $cmvars = count($varToCM);
+    $cms = [];
+    foreach($ret[1] as $var => $val){
+      if($var >= $cmvars){
+        break;
       }
+      if($val == 1){
+        $cms[] = $varToCM[$var];
+      }
+    }
+    $this->writeCurriculum($cms);
+    //dd($ret,$cmvars,$cms);
+  }
+  //dd($time,$this->modules,$coursesCMVars,$cmIDToVar,$A,$e,$b,$f,$ret);
+}
+
+public function getModules(){
+  return $this->modules;
+}
+
+public function setStudent($studentID = null, $studyProgramID = null){
+  if($studentID == null){
+    $this->student = new Student();
+    if($studyProgramID == null){
+      $this->student->study_program_id = StudyProgram::first()->id;
     }else{
-      $this->student = Student::findOrFail($studentID);
+      $this->student->study_program_id = $studyProgramID;
     }
+  }else{
+    $this->student = Student::findOrFail($studentID);
   }
+}
 
-  public function writeCurriculum($cms){
-    if(!empty($this->student->id) and $this->student->id > 0){
-      DB::beginTransaction();
-      try{
-        CourseModuleStudent::where('student_id',$this->student->id)->delete();
-        CourseModuleStudent::insert($cms);
-      }
-      catch(\Exception $e)
-      {
-        DB::rollBack();
-        throw $e;
-      }
-      DB::commit();
+public function writeCurriculum($cms){
+  if(!empty($this->student->id) and $this->student->id > 0){
+    DB::beginTransaction();
+    try{
+      CourseModuleStudent::where('student_id',$this->student->id)->delete();
+      CourseModuleStudent::insert($cms);
     }
+    catch(\Exception $e)
+    {
+      DB::rollBack();
+      throw $e;
+    }
+    DB::commit();
   }
+}
+
+public function printAasMatrix($A){
+  echo "<table border=1>";
+  foreach ($A as $row) {
+    echo "<tr>";
+    for($i=0;$i<=count($f); $i++) {
+      if(array_key_exists($i, $row)){
+        echo "<td>{$row[$i]}</td>";
+      }
+      echo '<td>0</td>';
+    }
+    echo "</tr>";
+  }
+  echo "</table>";
+}
 }

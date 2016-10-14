@@ -6,6 +6,7 @@ use Flash;
 use Kironuniversity\Curriculum\Classes\Curriculum;
 use Kironuniversity\General\Models\Student;
 use Queue;
+use Config;
 /**
  * Push Live Back-end Controller
  */
@@ -29,9 +30,15 @@ class PushLive extends Controller
     }
 
     public function genmodules(){
-        $students = Student::orderBy('id')->lists('id');
+        $students = Student::take(1)->orderBy('id')->lists('id');
         foreach($students as $studentID){
-          Queue::push('Kironuniversity\Curriculum\Classes\Curriculum', ['studentID' => $studentID]);
+          Queue::push('Kironuniversity\Curriculum\Classes\Curriculum@buildCurriculumJob', ['studentID' => $studentID]);
         }
+        Queue::push('Kironuniversity\Curriculum\Classes\Curriculum@refreshKironDBJob',['job'=>1]);
+    }
+
+    public function refresh(){
+      $curriculum = new Curriculum();
+      $curriculum->refreshKironDB();
     }
 }

@@ -90,11 +90,11 @@ return [
 
         'plan' => [
             'driver'   => 'pgsql',
-            'host'     =>  env('DB_HOST'),
+            'host'     =>  env('DBPLAN_HOST'),
             'port'     => '5432',
-            'database' => env('DB_DATABASE'),
-            'username' => env('DB_USERNAME'),
-            'password' => env('DB_PASSWORD'),
+            'database' => env('DBPLAN_DATABASE'),
+            'username' => env('DBPLAN_USERNAME'),
+            'password' => env('DBPLAN_PASSWORD'),
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
