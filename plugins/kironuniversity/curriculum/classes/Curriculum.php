@@ -109,7 +109,7 @@ class Curriculum
       */
     }
 
-
+    $deniedCGs = [];
     //Building CourseGroup Constraint and Vars
     foreach($this->modules as $module){
       foreach($module->course_groups as $course_group){
@@ -140,6 +140,7 @@ class Curriculum
           $e[] = 1; // >=
           $b[] = 1 - count($course_group->courses);
         }else{
+          $deniedCGs[] = $course_group->id;
           //Otherwise force this group to be zero
           $A[] = [$lastVar => 1];
           $e[] = 0;
@@ -151,6 +152,7 @@ class Curriculum
       }
     }
 
+    $infeasibleLOs = [];
     //Building learning outcome constraints
     foreach($this->modules as $module){
       foreach($module->learning_outcomes as $learning_outcome){
@@ -158,9 +160,13 @@ class Curriculum
           continue;
         }
         $constraint = [];
+        $feasible = false;
         foreach($learning_outcome->course_groups as $course_group){
           if(!array_key_exists($course_group->id, $cgIDToVar)){
             dd('Course Group not found',  $course_group->id, $cgIDToVar, $learning_outcome->toArray(), $this->modules->toArray());
+          }
+          if(!in_array($course_group->id, $deniedCGs)){
+            $feasible = true;
           }
           $constraint[$cgIDToVar[$course_group->id]] = 1;
         }
@@ -170,6 +176,9 @@ class Curriculum
           $b[] = 1;
         }
       }
+    }
+    if(!empty($infeasibleLOs)){
+      dd($infeasibleLOs);
     }
 
     //Use Course only onces
