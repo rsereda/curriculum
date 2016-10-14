@@ -181,7 +181,7 @@ class Curriculum
       }
     }
     if(!empty($infeasibleLOs)){
-      dd($infeasibleLOs);
+      dd($infeasibleLOs,$this->student);
     }
 
     //Use Course only onces
