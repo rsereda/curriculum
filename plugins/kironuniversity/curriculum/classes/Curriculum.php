@@ -180,7 +180,7 @@ class Curriculum
     return $this->modules;
   }
 
-  public function setStudent(){
+  public function setStudent($studentID = null, $studyProgramID = null){
     if($studentID == null){
       $this->student = new Student();
       if($studyProgramID == null){
