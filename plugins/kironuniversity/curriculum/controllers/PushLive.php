@@ -30,7 +30,7 @@ class PushLive extends Controller
     }
 
     public function genmodules(){
-        $students = Student::take(1)->orderBy('id')->lists('id');
+        $students = Student::orderBy('id')->lists('id');
         foreach($students as $studentID){
           Queue::push('Kironuniversity\Curriculum\Classes\Curriculum@buildCurriculumJob', ['studentID' => $studentID]);
         }
