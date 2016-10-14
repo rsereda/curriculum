@@ -33,14 +33,14 @@ class Plugin extends PluginBase
 
 
 
-    \Backend\Controllers\Auth::extend(function($controller) {
+    /*\Backend\Controllers\Auth::extend(function($controller) {
       //ob_get_clean();
       //Redirect::to('/backend/martin/ssologin/google');
       if(!env('DEBUG', false)){
         header('Location: /backend/martin/ssologin/google');
         die();
       }
-    });
+    });*/
 
 
 
