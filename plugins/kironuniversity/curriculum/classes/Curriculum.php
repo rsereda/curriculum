@@ -52,7 +52,7 @@ class Curriculum
   protected function loadModules(){
     $this->modules = Module::where('status','ready')->has('courses')->studyProgram($this->student->study_program_id)->with(['learning_outcomes.course_groups',
     'course_groups' => function($query){
-      $query->has('learning_outcomes')->whereIn('status', ['ready', 'old']);
+      $query->has('learning_outcomes');
     },'course_groups.courses.course',
     'courses' => function($query){
       $query->where('status', 'ready');
