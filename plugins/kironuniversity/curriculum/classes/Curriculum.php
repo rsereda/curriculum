@@ -116,7 +116,7 @@ class Curriculum
         $f[$lastVar] = 0;
 
         $constraint = [$lastVar => 1];
-        $contraints = [];
+        $constraints = [];
         $hastaken = false;
         foreach($course_group->courses as $course_module){
           if($course_module->course->status !=  'ready'){
