@@ -20,16 +20,10 @@ fields:
 
     learning_outcomes:
       label: Learning Outcomes
-      type: taglist
-      customTags: false
-      options: true
-      mode: relation
+      type: relation
       nameFrom: denomination
 
     courses:
       label: Courses
       type: relation
-      customTags: false
-      options: true
-      mode: relation
       nameFrom: course_denomination

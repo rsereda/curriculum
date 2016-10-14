@@ -44,6 +44,7 @@ class CourseGroup extends Model
       'learning_outcomes' => [
         'Kironuniversity\Curriculum\Models\LearningOutcome',
         'table' => 'course_group__learning_outcome',
+        'scope' => 'module',
       ],
     ];
     public $morphTo = [];

@@ -1,7 +1,7 @@
 <?php namespace Kironuniversity\Curriculum\Models;
 
 use Model;
-
+use Config;
 /**
  * LearningOutcome Model
  */
@@ -61,5 +61,12 @@ class LearningOutcome extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+    public function scopeModule($query){
+      if(Config::has('current_module') && is_numeric(Config::get('current_module')) && Config::get('current_module') > 0){
+        $query->where('module_id', '=', Config::get('current_module'));
+      }
+      return $query;
+    }
 
 }
