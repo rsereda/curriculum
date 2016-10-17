@@ -26,7 +26,7 @@ class Curriculum
   protected $student;
 
   public function __construct($studentID = null, $studyProgramID = null){
-    $this->setStudent($studentID = null, $studyProgramID = null);
+    $this->setStudent($studentID, $studyProgramID);
     $this->loadModules();
   }
 
@@ -59,9 +59,6 @@ class Curriculum
     }
     ])->orderBy('module.id')->get();
   }
-
-
-
 
   public function buildCurriculum(){
     $time_start = microtime(true);
