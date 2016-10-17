@@ -244,6 +244,15 @@ class Curriculum
     }
   }
 
+  public function setStudyProgram($studyProgramID){
+    if(!isset($this->student)){
+      $this->setStudent(null,$studyProgramID);
+    }else{
+      $this->student->study_program_id = $studyProgramID;
+      $this->loadModules();
+    }
+  }
+
   public function writeCurriculum($cms){
     if(!empty($this->student->id) and $this->student->id > 0){
       DB::beginTransaction();
