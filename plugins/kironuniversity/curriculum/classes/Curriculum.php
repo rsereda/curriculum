@@ -129,7 +129,7 @@ class Curriculum
           $constraints[] = [$cmVarID => -1, $lastVar => 1];
           $constraint[$cmVarID] = -1;
         }
-        if($course_group->status ==  'ready' or ($course_group->status ==  'old' && $hastaken)){
+        if(($course_group->status ==  'ready') || (($course_group->status == 'old') && $hastaken)){
           //Only add constriants if group is ready or courses were taken
           foreach($constraints as $smaller){
             $A[] = $smaller;
@@ -181,7 +181,7 @@ class Curriculum
       }
     }
     if(!empty($infeasibleLOs)){
-      dd($infeasibleLOs,$this->student);
+      dd($infeasibleLOs,$taken,$this->student);
     }
 
     //Use Course only onces
