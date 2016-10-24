@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 MAINTAINER Roman Sereda <roman.sereda@kiron.ngo>
-
+#Curriculum
 
 RUN apt-get update && apt-get install -y \
         software-properties-common \
@@ -39,10 +39,10 @@ ARG PUID=1000
 ARG PGID=1000
 RUN groupadd -g $PGID webapp && \
     useradd -u $PUID -g webapp -m webapp
-ADD docker.env /.env
+
 
 RUN echo "" > /var/log/php7.0-fpm.log
 RUN chmod 644  /var/log/php7.0-fpm.log
 
 EXPOSE 9000
-CMD service php7.0-fpm start && cp /.env .env | true && cd /var/www/html/curriculum && su webapp -c 'composer  install  ' &&  php artisan october:up  &&   while true; do sleep 1000; done
+CMD service php7.0-fpm start &&   while true; do sleep 1000; done
