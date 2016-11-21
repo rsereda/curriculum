@@ -64,9 +64,9 @@ RUN cd /usr/lib/lp_solve_5.5/extra/PHP/ && \
            ./configure --enable-maintainer-zts --with-phplpsolve55=../.. && \
            make && \
            make test
-RUN ln -s /usr/lib/lp_solve_5.5/extra/PHP/modules/phplpsolve55.so /usr/lib/php/20160303/phplpsolve55.so
+RUN ln -s /usr/lib/lp_solve_5.5/extra/PHP/modules/phplpsolve55.so /usr/lib/php/20151012/phplpsolve55.so
 
-RUN echo "extension=/usr/lib/php/20160303/phplpsolve55.so" >> /etc/php/7.0/mods-available/lp_solve.ini
+RUN echo "extension=phplpsolve5.5.so" >> /etc/php/7.0/mods-available/lp_solve.ini
 RUN ln -s /etc/php/7.0/mods-available/lp_solve.ini /etc/php/7.0/fpm/conf.d/lp_solve.ini
 RUN ln -s /etc/php/7.0/mods-available/lp_solve.ini /etc/php/7.0/cli/conf.d/lp_solve.ini
 
