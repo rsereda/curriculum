@@ -48,7 +48,11 @@ RUN echo "" > /var/log/php7.0-fpm.log
 RUN chmod 644  /var/log/php7.0-fpm.log
 
 ##Add lp_solve support
-COPY src/lp_solve_5.5 /usr/lib/lp_solve_5.5
+
+
+RUN git clone https://github.com/rsereda/php7_lp_solver.git /usr/lib/lp_solve_5.5
+RUN mv  /usr/lib/lp_solve_5.5/src/lp_solve_5.5/* /usr/lib/lp_solve_5.5
+
 RUN ln -s /usr/lib/lp_solve/liblpsolve55.so /usr/lib
 RUN cd /usr/lib/lp_solve_5.5/lpsolve55/ && chmod +x ccc && bash ./ccc | true
 RUN cd  /usr/lib/lp_solve_5.5/lp_solve && chmod +x ccc && bash ./ccc | true
